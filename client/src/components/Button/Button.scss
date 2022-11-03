@@ -1,0 +1,45 @@
+@import "../../utils/colors.scss";
+
+.btn {
+  border: none;
+  border-radius: 5px;
+  color: $c-white;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.btn--small {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 5px;
+  min-width: 55px;
+  padding: 5px 15px;
+}
+
+.btn--medium {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 5px;
+  min-width: 150px;
+  padding: 10px 35px
+}
+
+.btn--large {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 10px;
+  padding: 12px 50px;
+}
+
+.btn--clear {
+  background-color: rgba(255, 255, 128, 0);
+  border: 1px solid $c-white;
+}
+
+.btn--blue {
+  background-color: $c-blue-bright;
+}
+
+.btn--orange {
+  background-color: $c-orange;
+}

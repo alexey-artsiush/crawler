@@ -1,0 +1,36 @@
+@import "../../utils/colors.scss";
+
+.apartment-description {
+  color: $c-blue-dark;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+.apartment-price {
+  font-weight: 500;
+  margin-bottom: 2px;
+  width: 100%;
+}
+
+.apartment-name {
+  font-weight: 600;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.apartment-address {
+  color: $c-grey;
+  display: flex;
+  height: 1rem;
+  justify-content: center;
+  margin: 3px;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 100%;
+}
+
+.apartment-price {
+  display: flex;
+  justify-content: center;
+}

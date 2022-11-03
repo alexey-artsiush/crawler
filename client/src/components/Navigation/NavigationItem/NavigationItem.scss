@@ -1,0 +1,13 @@
+@import "../../../utils/colors.scss";
+
+.navigation-item-active {
+  cursor: pointer;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.navigation-item {
+  cursor: pointer;
+  font-weight: 400;
+  margin: 5px 0;
+}

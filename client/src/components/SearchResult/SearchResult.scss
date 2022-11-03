@@ -1,0 +1,21 @@
+@import "../../utils/colors.scss";
+
+.search-cards {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result {
+  color: $c-blue-dark;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 auto;
+  padding-top: 11px;
+  width: 97%;
+}
+
+.search-result-options {
+  margin: 0 auto 50px;
+  width: 95%;
+}

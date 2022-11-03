@@ -1,0 +1,30 @@
+@import "../../utils/colors.scss";
+
+.navigation {
+  color: $c-blue-dark;
+  margin: 10px 0;
+  min-width: 180px;
+}
+
+.navigation-user {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 5px 15px 0;
+}
+
+@media (max-width: 1252px) {
+  .navigation {
+    align-items: center;
+    display: flex;
+    font-size: 1.7rem;
+    margin-bottom: 30px;
+
+    .navigation-user {
+      display: none;
+    }
+
+    .navigation-item {
+      margin: 5px 15px;
+    }
+  }
+}

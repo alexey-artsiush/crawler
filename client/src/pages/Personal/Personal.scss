@@ -1,0 +1,177 @@
+@import "../../utils/colors.scss";
+
+.personal-account-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 50px auto;
+  max-width: 85%;
+}
+
+.personal-account-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.personal-info {
+  color: $c-blue-dark;
+  font-weight: 600;
+  margin-top: 71px;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  width: 224px;
+}
+
+@keyframes ani {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.personal-account-wrapper:hover .personal-info {
+  animation: ani 1.5s forwards;
+  opacity: 1;
+}
+
+.personal-account-menu {
+  min-width: 180px;
+  width: 20%;
+}
+
+.personal-account-content {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.create-apartment-container {
+  margin: 0 auto;
+  width: 85%;
+}
+
+.create-apartment-photo {
+  width: 100%;
+}
+
+.create-apartment-description .container, .create-apartment-description input, .create-apartment-description {
+  height: 200px;
+  margin-bottom: 25px;
+  max-width: 100%;
+}
+
+.create-apartment-details {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.create-apartment-details .container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  height: 20px;
+  justify-content: space-between;
+  margin: 10px;
+  width: 40%;
+}
+
+.create-apartment-details input {
+  width: 112px;
+}
+
+.textarea {
+  border: 2px solid $c-grey-light;
+  border-radius: 5px;
+  color: $c-blue-dark;
+  font-size: 24px;
+  height: 150px;
+  width: 100%;
+}
+
+.personal-account-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-error-accept {
+  display: flex;
+  justify-content: center;
+}
+
+.personal-photo-update {
+  display: none;
+  justify-content: center;
+
+  button {
+    background-color: $c-white;
+    border: none;
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+.personal-photo {
+  margin: 40px 10px 10px 20px;
+  min-width: 300px;
+
+  button {
+    background-color: $c-white;
+    border: none;
+  }
+
+  input {
+    cursor: pointer;
+    opacity: 0;
+    width: 100px;
+    z-index: 2;
+  }
+  
+  .list-upload {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 875px) {
+  .create-apartment-details .container {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 570px) {
+  .personal-account-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px auto;
+    max-width: 97%;
+  }
+
+  .personal-account-content {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .personal-account-items {
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0 auto;
+    min-width: 270px;
+    padding: 15px 0; 
+  }
+
+  .navigation-item, .navigation-user, .navigation-item-active {
+    font-size: 1.3rem;
+  }
+
+  .create-apartment-photo::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .create-apartment-container {
+    padding-bottom: 25px;
+  }
+}

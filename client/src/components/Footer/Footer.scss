@@ -1,0 +1,72 @@
+@import "../../utils/colors.scss";
+
+.footer {
+  background-color: $c-blue;
+  color: $c-white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  line-height: 1.7;
+  margin-top: 30px;
+  padding: 80px 10px 102px;
+  position: absolute;
+  width: 100%;
+}
+
+.footer-description {
+  text-align: center;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.footer-column {
+  margin: 0 auto;
+  width: 19%;
+}
+
+.footer-column-header {
+  height: 2rem;
+  margin-bottom: 4rem;  
+  text-align: center;
+}
+
+a {
+  color: $c-white;
+  text-decoration: none;
+}
+
+@media (max-width: 689px) {
+  .footer {
+    margin: 310px auto 0;
+    padding: 20px 10px 100px;
+  }
+
+  .footer-column {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-column-header {
+    margin-bottom: 70px;
+  }
+  .footer-media {
+    display: none;
+  }
+
+  .footer-column {
+    width: 45%;
+  }
+}
+
+@media (max-width: 570px) {
+  .footer h4, p {
+    text-align: center;
+  }
+}
+

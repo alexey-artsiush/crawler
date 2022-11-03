@@ -1,0 +1,14 @@
+@import "../../utils/colors.scss";
+
+.property-block {
+  background-image: linear-gradient(180deg, rgba(47, 133, 235, 0.8) 0%, rgba(42, 137, 240, 0.8) 100%), url(../../images/background.jpg);
+  height: 200px;
+  margin-top: 50px;
+  padding: 40px 0 0 0;
+  width: 100%;
+}
+
+.property-block h3 {
+  color: $c-white;
+  margin: 20px 0 0 10%;
+}

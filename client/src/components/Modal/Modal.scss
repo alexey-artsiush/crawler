@@ -1,0 +1,41 @@
+@import "../../utils/colors.scss";
+
+.modal {
+  align-items: center;
+  background-color: $c-grey;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  transition: 0.5s;
+  width: 100vw;
+  z-index: 4;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  background-color: $c-white;
+  border-radius: 12px;
+  padding: 35px 45px;
+  transform: scale(0.5);
+  transition: 0.4s all;
+  width: 30vw;
+}
+
+.modal-content.active {
+  transform: scale(1)
+}
+
+.modal-container h4 {
+  display: flex;
+  justify-content: center;
+  margin: 60px 0;
+}

@@ -1,0 +1,48 @@
+@import "../../utils/colors.scss";
+
+.autocomplete-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.autocomplete-wrapper * {
+  box-sizing: border-box;
+  color: $c-blue-dark;
+  margin-bottom: 30px;
+}
+
+.autocomplete-wrapper input {
+  border: 2px solid $c-grey-light;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+.autocomplete-wrapper input:focus {
+  border-color: $c-blue-light;
+  outline: none;
+}
+
+.suggestions {
+  background: $c-white;
+  border: 2px solid $c-black;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  text-align: left;
+  top: 0;
+  transform: translateY(39px);
+  width: 100%;
+  z-index: 10;
+}
+
+.list-item {
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.list-item:hover {
+  background: $c-grey-light;
+}

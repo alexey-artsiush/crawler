@@ -1,0 +1,95 @@
+@import "../../utils/colors.scss";
+
+.filter {
+  background-color: $c-blue;
+  color: $c-white;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -3px 0 140px;
+}
+
+.filter-panel {
+  background-color: $c-white;
+  border-radius: 8px;
+  box-shadow: 1px 8px 30px 0 $c-grey-light;
+  color: $c-blue-dark;
+  display: flex;
+  justify-content: space-around;
+  margin: -69px auto;
+  padding: 18px 22px;
+  width: 76%;
+}
+
+.filter-point {
+  display: flex;
+  flex-wrap: wrap;
+  width: 48%;
+}
+
+.filter-header {
+  padding-bottom: 7vw;
+  width: 100%;
+}
+
+.filter-banner {
+  margin-left: 20vh;
+}
+
+.filter-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  width: 100%;
+}
+
+.filter-wrapper {
+  margin-bottom: 0;
+  margin-top: auto; 
+}
+
+@media (max-width: 800px) {
+  .filter-panel {
+    flex-wrap: wrap;
+    height: 180px;
+  }
+
+  .filter-wrapper {
+    margin-right: 30px;
+  }
+
+  .filter-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+
+  .filter-banner {
+    margin-left: 2vh;
+  }
+}
+
+@media (max-width: 570px) {
+  .filter {
+    margin-bottom: 100px;
+  }
+
+  .filter-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+
+  .filter-panel {
+    flex-wrap: wrap;
+    height: 220px;
+  }
+
+  .filter-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-right: 0;
+    width: 100%;
+  }
+}

@@ -1,0 +1,45 @@
+@import "../../utils/colors.scss";
+
+.city-item {
+  background-color: $c-white;
+  color: $c-white;
+  cursor: pointer;
+  height: 100%;
+  padding: 0 6px;
+  position: relative;
+  text-decoration: none;
+  width: 100%;
+}
+
+.city-item:not(:last-child) {
+  margin-bottom: 30px;
+  margin-right: 50px;
+}
+
+.city-header {
+  font-size: 52px;
+  font-weight: 500;
+  height: 100%;
+  margin: 12px 0;;
+}
+
+.city-title {
+  align-items: flex-end;
+  display: flex;
+  font-size: 52px;
+  font-weight: 400;
+  height: 100%;
+  justify-content: flex-end;
+  margin: -12px 0;
+  padding: 0 5px 5px 0;
+  z-index: 2;
+}
+
+.city-details {
+  padding: 10px 20px;
+}
+
+.city-description {
+  font-size: 14px;
+  margin-top: 10px;
+}

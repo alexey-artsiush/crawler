@@ -1,0 +1,60 @@
+@import "../../utils/colors.scss";
+
+.header {
+  background-color: $c-blue;
+  display: flex;
+  justify-content: space-between;
+  padding: 1% 4%;
+}
+
+.header-buttons {
+  align-items: center;
+  display: flex;
+}
+
+.header-logo img {
+  cursor: pointer;
+}
+
+.header-user-photo {
+  background-color: $c-white;
+  border-radius: 50px;
+  cursor: pointer;
+  height: 45px;
+  margin-right: 10px;
+  width: 45px;
+}
+
+.header-user-photo img {
+  border-radius: 50px;
+  height: 45px;
+  width: 45px;
+}
+
+@media (max-width: 700px) {
+  .header {
+    padding: 0;
+
+    button {
+    max-width: 410px;
+    }
+  }
+
+  .header-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 570px) {
+  .header {
+    flex-direction: column;
+  }
+  
+  .header-logo {
+    margin: auto;
+  }
+
+  .header-user-photo {
+    margin: 0;
+  }
+}

@@ -1,0 +1,319 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react/jsx-fragments */
+/* eslint-disable no-unneeded-ternary */
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useJsApiLoader } from '@react-google-maps/api';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../Button';
+import { Dropdown } from '../Dropdown';
+import { FileUpload } from '../FileUpload';
+import { Modal } from '../Modal';
+import { Input } from '../Input';
+import { updateApartment } from '../../store/apartment/apartmentSlice';
+import { selectUser } from '../../store/user/userSlice';
+import { Spinner } from '../Spinner';
+import { Autocomplete } from '../Autocomplete/Autocomplete';
+import paths from '../../utils/paths';
+import './EditApartmentForm.scss';
+
+export const EditApartmentForm = ({ apartment }) => {
+  const user = useSelector(selectUser);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [title, setTitle] = useState(apartment?.name);
+  const [address] = useState(apartment?.address);
+  const [description, setDescription] = useState(apartment?.description);
+  const [price, setPrice] = useState(apartment?.price);
+  const [square, setSquare] = useState(apartment?.square);
+  const [room, setRoom] = useState(apartment?.leavingRoom);
+  const [bathroom, setBathroom] = useState(apartment?.bathroom);
+  const [parkingSpace, setParkingSpace] = useState(apartment?.parkingSpace);
+  const [yearBuilt, setYearBuilt] = useState(apartment?.yearBuilt);
+  const [metro, setMetro] = useState(apartment?.metro);
+  const [floor, setFloor] = useState(apartment?.floor);
+  const [location, setLocation] = useState(apartment?.location);
+  const [rentalPeriod, setRentalPeriod] = useState(apartment?.rentalPeriod);
+  const [files, setFiles] = useState(apartment?.files);
+  const [count, setCount] = useState(0);
+
+  const [confirmModal, setConfirmModal] = useState(false);
+  const [inputValid, setInputValid] = useState(false);
+
+  const editDescription = (comment) => {
+    setDescription(comment);
+    setCount(comment.length);
+  };
+
+  const removeFile = (filename) => {
+    setFiles(files.filter((file) => file.name !== filename));
+  };
+
+  useEffect(() => {
+    if (
+      !title
+      || !address
+      || !description
+      || !price
+      || !square
+      || !room
+      || !bathroom
+      || !parkingSpace
+      || !yearBuilt
+      || !floor
+      || !location
+      || !rentalPeriod
+    ) {
+      setInputValid(false);
+    } else {
+      setInputValid(true);
+    }
+  }, [
+    title,
+    address,
+    description,
+    price,
+    square,
+    room,
+    bathroom,
+    parkingSpace,
+    yearBuilt,
+    metro,
+    floor,
+    location,
+    rentalPeriod,
+  ]);
+
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  const libraries = ['places'];
+  const { isLoaded, loadError } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: API_KEY,
+    version: 'weekly',
+    libraries,
+    url: 'https://maps.googleapis.com/maps/api/js',
+  });
+
+  const createFormApartment = () => {
+    const formData = new FormData();
+    formData.append('id', apartment.id);
+    formData.append('name', title);
+    formData.append('price', price);
+    formData.append('square', square);
+    formData.append('leavingRoom', room);
+    formData.append('metro', metro);
+    formData.append('parkingSpace', parkingSpace);
+    formData.append('yearBuilt', yearBuilt);
+    formData.append('bathroom', bathroom);
+    formData.append('address', address);
+    formData.append('rentalPeriod', rentalPeriod);
+    formData.append('description', description);
+    formData.append('floor', floor);
+    formData.append('location', location);
+    formData.append('userId', user.id);
+    formData.append('premium', apartment.premium);
+    formData.append('ownerName', user.firstName);
+    formData.append('ownerPhone', user.phone);
+    formData.append('ownerImage', user.img);
+    dispatch(updateApartment(formData)).then((res) => {
+      if (!res.error) {
+        navigate(paths.personalObjects);
+      }
+    });
+  };
+
+  if (loadError || !isLoaded || !window.google) {
+    return <Spinner />;
+  }
+
+  return (
+    <div>
+      <div className="create-apartment-container">
+        <Button
+          onClick={() => {
+            navigate(-1);
+          }}
+          type="orange"
+        >
+          {'< Back'}
+        </Button>
+        <h4>Create an ad</h4>
+        <form className="">
+          <Input
+            type="text"
+            placeholder="Enter title"
+            text="Title"
+            value={title}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
+          <div className="create-apartment-photo">
+            <FileUpload
+              files={files}
+              setFiles={setFiles}
+              removeFile={removeFile}
+              multiple="multiple"
+            />
+          </div>
+          <div className="create-apartment-description">
+            <h4>Description</h4>
+            <textarea
+              maxLength="2500"
+              className="textarea"
+              value={description}
+              type="text"
+              placeholder="Enter description"
+              onChange={(e) => {
+                editDescription(e.target.value);
+              }}
+            />
+            <div className="symbol-counter">{`${count} /2500`}</div>
+          </div>
+          <h4>Details</h4>
+          <div className="create-apartment-details">
+            <Input
+              size="s"
+              value={price}
+              type="text"
+              placeholder=""
+              text="Price, $"
+              onChange={(e) => {
+                setPrice(e.target.value);
+              }}
+            />
+            <Input
+              size="s"
+              value={square}
+              type="text"
+              placeholder=""
+              text="Square"
+              onChange={(e) => {
+                setSquare(e.target.value);
+              }}
+            />
+            <div className="container">
+              <h5>Room</h5>
+              <Dropdown
+                selected={room}
+                setSelected={setRoom}
+                options={['1', '2', '3', '4']}
+              />
+            </div>
+            <Input
+              size="s"
+              value={metro}
+              type="text"
+              placeholder=""
+              text="Metro"
+              onChange={(e) => {
+                setMetro(e.target.value);
+              }}
+            />
+            <div className="container">
+              <h5>Bathroom</h5>
+              <Dropdown
+                selected={bathroom}
+                setSelected={setBathroom}
+                options={['1', '2', '3']}
+              />
+            </div>
+            <div className="container">
+              <h5>Parking space</h5>
+              <Dropdown
+                selected={parkingSpace}
+                setSelected={setParkingSpace}
+                options={['yes', 'no']}
+              />
+            </div>
+            <Input
+              size="s"
+              value={yearBuilt}
+              type="number"
+              min="1900"
+              max="2040"
+              step="1"
+              placeholder=""
+              text="Year built"
+              onChange={(e) => {
+                setYearBuilt(e.target.value);
+              }}
+            />
+            <Input
+              size="s"
+              value={floor}
+              type="number"
+              placeholder=""
+              text="Floor"
+              onChange={(e) => {
+                setFloor(e.target.value);
+              }}
+            />
+            <div className="container">
+              <h5>Rental period</h5>
+              <Dropdown
+                selected={rentalPeriod}
+                setSelected={setRentalPeriod}
+                options={['short-term', 'long-term']}
+              />
+            </div>
+            <div className="container">
+              <h5>City</h5>
+              <Dropdown
+                selected={location}
+                setSelected={setLocation}
+                options={[
+                  'Minsk',
+                  'Grodno',
+                  'Brest',
+                  'Gomel',
+                  'Mogilev',
+                  'Vitebsk',
+                ]}
+              />
+            </div>
+          </div>
+          <h4>Add address</h4>
+          <Autocomplete
+            isLoaded={isLoaded}
+            placeholder={address}
+          >
+            <React.Fragment />
+          </Autocomplete>
+          <Button
+            type="orange"
+            onClick={createFormApartment}
+            disabled={inputValid ? false : true}
+            className={inputValid ? '' : 'disabled'}
+          >
+            Update
+          </Button>
+          <Button
+            onClick={() => setConfirmModal(true)}
+            type="orange"
+          >
+            Delete
+          </Button>
+          <Modal
+            active={confirmModal}
+            setActive={setConfirmModal}
+          >
+            <div className="modal-container">
+              <h4>Are you sure?</h4>
+              <div className="modal-error-accept">
+                <Button
+                  type="orange"
+                  onClick={() => setConfirmModal(false)}
+                >
+                  Yes
+                </Button>
+              </div>
+            </div>
+          </Modal>
+        </form>
+      </div>
+    </div>
+  );
+};

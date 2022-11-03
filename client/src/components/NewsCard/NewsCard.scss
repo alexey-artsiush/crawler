@@ -1,0 +1,23 @@
+@import "../../utils/colors.scss";
+
+.news-short-description {
+  color: $c-grey;
+  height: 2.08rem;
+  margin: 10px 20px 25px;
+  overflow: hidden;
+}
+
+.news-card {
+  background-color: $c-white;
+  box-shadow: 5px 3px 10px 2px $c-grey-light;
+  color: $c-white;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  width: 93%;
+}
+
+.news-card-body {
+  height: 30%;
+  padding-bottom: 15px;
+}

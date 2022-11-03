@@ -1,0 +1,35 @@
+@import "../../utils/colors.scss";
+
+.news {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  width: 85%;
+}
+
+.news-header {
+  cursor: pointer;
+  width: 100%;
+}
+
+.news-title {
+  color: $c-blue-dark;
+  font-size: 20px;
+  font-weight: 600;
+  height: 1.3rem;
+  margin: 20px 20px 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.select-content-news {
+  display: flex;
+  flex-wrap: wrap;
+  height: 420px;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+}

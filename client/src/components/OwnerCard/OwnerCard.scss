@@ -1,0 +1,31 @@
+@import "../../utils/colors.scss";
+
+.owner-card {
+  background-color: $c-grey-light;
+  display: flex;
+  margin-bottom: 30px;
+  max-width: 350px;
+}
+
+.owner-card-photo {
+  margin: 15px 0 5px 5px;
+  width: 70px;
+}
+
+.owner-card-user {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 60%;
+}
+
+.owner-card-contact a {
+  color: $c-grey;
+  text-decoration: none;
+}
+
+.owner-card-user-name {
+  font-weight: 600;
+  margin-bottom: 15px;
+}

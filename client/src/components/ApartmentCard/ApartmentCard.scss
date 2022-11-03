@@ -1,0 +1,146 @@
+@import "../../utils/colors.scss";
+
+.apartment-card {
+  background-color: $c-blue-light;
+  cursor: pointer;
+  display: flex;
+  margin: 0 auto;
+  margin: 10px 0;
+  width: 95%;
+}
+
+.active-status {
+  color: $c-orange;
+}
+
+.apartment-card-content {
+  overflow: hidden;
+  width: 60%;
+  }
+
+.premium {
+  background-color: $c-blue-dark;
+
+  h6, .apartment-card-name, .apartment-card-metro, .apartment-card-characteristic, .apartment-card-description, .apartment-card-price, .apartment-card-id {
+    color: $c-white;
+  }
+
+  .apartment-card-address {
+    color: $c-grey-light;
+  }
+}
+
+.apartment-card-address {
+  height: 1.3rem;
+  overflow: hidden;
+}
+
+.apartment-card-panel {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+  padding-top: 15px;
+  width: 10%;
+}
+
+.apartment-photo {
+  padding: 17px 10px 17px 5px;
+  width: 30%;
+}
+
+.apartment-card-price {
+  color: $c-blue-dark;
+  display: flex;
+  display: flex;
+  font-size: 25px;
+  font-weight: 700;
+  justify-content: center;
+  margin: 5px 0 0 5px;
+}
+
+.apartment-card-description {
+  color: $c-grey-dark;
+  overflow: hidden;
+  width: 100%;
+  height: 3.8rem;
+}
+
+.apartment-card-title {
+  color: $c-blue-dark;
+  display: flex;
+  font-size: 26px;
+  font-weight: 700;
+  justify-content: space-between;
+  padding: 7px 0 10px;
+  width: 90%;
+}
+
+.apartment-card-id {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.apartment-card-address {
+  color: $c-grey;
+  margin: 5px 0; 
+}
+
+.apartment-card-metro {
+  align-items: center;
+  color: $c-blue-dark;
+  display: flex;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.apartment-card-metro img {
+  margin-right: 5px;
+}
+
+.apartment-card-characteristics {
+  display: flex;
+  height: 3rem;
+  margin: 15px 0;
+  
+}
+
+.apartment-card-characteristic {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  margin-right: 30px;
+
+  span {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 570px) {
+  .apartment-card {
+    margin: 5px;
+    padding: 5px;
+    width: 95%;
+  }
+
+  .apartment-photo {
+    margin: 7px 0;
+    padding: 5px;
+  }
+
+  .apartment-card-price {
+    font-size: 20px;
+  }
+
+  .apartment-card-description {
+    margin: 5px;
+    overflow: hidden;
+    width: 100%;
+    height: 3.8rem;
+  }
+  .apartment-card-content {
+    margin: 5px;
+    overflow: hidden;
+    width: 100%;
+  }
+}

@@ -1,0 +1,29 @@
+.select-city {
+  margin: 0 auto;
+  margin-bottom: 100px;
+  width: 85%;
+}
+
+.select-content {
+  display: flex;
+  flex-wrap: wrap;
+  height: 500px;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.select-content::-webkit-scrollbar {
+  width: 0;
+}
+
+.select-one {
+  margin: 14px 5px;
+  width: 32%;
+}
+
+@media (max-width: 570px) { 
+  .select-one {
+    width: 47%;
+  }
+}

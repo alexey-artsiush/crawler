@@ -1,0 +1,15 @@
+@import "../../utils/colors.scss";
+
+.news-list {
+  width: 85%;
+  margin: 40px auto;
+}
+
+.news-list h4 {
+  color: $c-blue-dark;
+  font-weight: 600;
+}
+
+.news-list-title {
+  width: 100%;
+}

@@ -1,0 +1,23 @@
+@import "../../utils/colors.scss";
+
+.detail-card {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  min-width: 300px;
+  width: 50%;
+}
+
+.detail-card-title {
+  color: $c-blue-dark;
+  font-size: 18px;
+  font-weight: 600;
+  width: 30%;
+}
+
+.detail-card-value {
+  color: $c-grey;
+  font-size: 18px;
+  font-weight: 400;
+  width: 70%;
+}
