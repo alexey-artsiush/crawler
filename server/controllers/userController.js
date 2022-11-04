@@ -1,6 +1,10 @@
 const ApiError = require('../error/apiError')
 const {User} = require('../models/index')
 const bcrypt = require('bcrypt')
+const userService = require('../service/userService');
+const { validationResult } = require('express-validator');
+const mailService = require('../service/mailService');
+const tokenService = require('../service/tokenService');
 const uuid = require('uuid')
 const path = require('path')
 const jwt = require('jsonwebtoken') 
@@ -24,33 +28,62 @@ class UserController {
     return next(ApiError.badRequest('Email already exist'))
   }
   const hashPassword = await bcrypt.hash(password, 5)
+  const activationLink = uuid.v4();
+  await mailService.sendActivationMail(email, `${process.env.API_URL}/api/user/activate/${activationLink}`);
 
-  const user = await User.create({email, firstName, lastName, password: hashPassword, city, sex, img: fileName, role: "USER", phone}) 
+  const user = await User.create({email, firstName, lastName, password: hashPassword, city, sex, img: fileName, role: "USER", phone, activationLink}) 
 
-  const token = generateJwt(user.id, user.email, user.firstName, user.lastName, user.role, user.city, user.sex, user.img, user.phone)
-  return res.json({token})
+  const tokens = tokenService.generateTokens({...user});
+  await tokenService.saveToken(user.id, tokens.refreshToken);
+
+  res.cookie('refreshToken', user.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
+  return res.json({...tokens, user})
     } catch (e) {
       next(ApiError.badRequest(e.message))
     }
   }
  
   async login(req, res, next) {
-    const {email, password} = req.body
-    const user = await User.findOne({where: {email}})
-    if (!user) {
-        return next(ApiError.internal('Invalid email or password'))
+    try {
+      const {email, password} = req.body
+      const userData = await userService.login(email, password);
+      res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
+      return res.json(userData);
+    } catch (e) {
+      next(e);
     }
-    let comparePassword = bcrypt.compareSync(password, user.password)
-    if (!comparePassword) {
-      return next(ApiError.internal('Invalid password'))
-    }
-    const token = generateJwt(user.id, user.email, user.firstName, user.lastName, user.role, user.city, user.sex, user.img, user.phone)
-    return res.json({token})
   }
 
-  async check(req, res, next) {
-    const token = generateJwt(req.user.id, req.user.email, req.user.firstName, req.user.lastName, req.user.role, req.user.city, req.user.sex, req.user.img, req.user.phone)
-    return res.json({token})
+  async logout(req, res, next) {
+    try {
+      const {refreshToken} = req.cookies;
+      const token = await userService.logout(refreshToken);
+      res.clearCookie('refreshToken');
+      return res.json(token);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async activate(req, res, next) {
+    try {
+      const activationLink = req.params.link;
+      await userService.activate(activationLink);
+      return res.redirect(process.env.CLIENT_URL);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async refresh(req, res, next) {
+    try {
+      const {refreshToken} = req.cookies;
+      const userData = await userService.refresh(refreshToken);
+      res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
+        return res.json(userData);
+    } catch (e) {
+        next(e);
+    }
   }
 
   async update(req, res, next) {
@@ -75,6 +108,15 @@ class UserController {
     return res.json({token})
    } catch (e) {
       next(ApiError.badRequest(e.message))
+    }
+  }
+
+  async getUsers(req, res, next) {
+    try {
+      const users = await userService.getAllUsers();
+      return res.json(users);
+    } catch (e) {
+      next(e);
     }
   }
 }
