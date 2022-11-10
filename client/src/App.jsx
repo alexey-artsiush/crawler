@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Apartment } from './pages/Apartment/Apartment';
@@ -8,35 +8,22 @@ import { Home } from './pages/Home';
 import { EditPage } from './pages/EditPage';
 import { Search } from './pages/Search/Search';
 import { PersonalAccount } from './pages/Personal/PersonalAccount';
-import { check } from './store/services/userService';
-import { setIsAuth, setUser } from './store/user/userSlice';
-import { Spinner } from './components/Spinner';
 import { News } from './pages/News';
 import { NewsList } from './pages/NewsList';
 import { CreateApartment } from './pages/Personal/PersonalCreateApartment';
 import { PersonalObjects } from './pages/Personal/PersonalObjects';
 import { CreateNews } from './pages/Personal/PersonalCreateNews';
+import { checkAuth } from './store/user/userSlice';
 import paths from './utils/paths';
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
-      check()
-        .then((data) => {
-          dispatch(setUser(data));
-          dispatch(setIsAuth());
-        }).finally(() => {
-          setLoading(false);
-        });
-    }, 1000);
-  }, [dispatch]);
-
-  if (loading) {
-    return <Spinner />;
-  }
+    if (localStorage.getItem('token')) {
+      dispatch(checkAuth());
+    }
+  }, []);
 
   return (
     <Routes>

@@ -3,11 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { registration } from '../../store/services/userService';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { useInput } from '../../hooks/validation';
-import { selectState, setUser } from '../../store/user/userSlice';
+import { registrationUser, selectState } from '../../store/user/userSlice';
 import { Dropdown } from '../../components/Dropdown';
 import logo from '../../images/big-logo.png';
 import paths from '../../utils/paths';
@@ -21,7 +20,7 @@ export const Registr = () => {
   const phone = useInput('', { isPhone: true });
   const [sex, setSex] = useState('');
   const [city, setCity] = useState();
-  const [error, setError] = useState('');
+  const error = useSelector((state) => state.user.error);
   const [img, setImg] = useState(null);
   const isAuth = useSelector(selectState);
 
@@ -64,11 +63,10 @@ export const Registr = () => {
       formData.append('password', password.value);
       formData.append('img', img);
       formData.append('phone', phone.value);
-      await registration(formData);
-      dispatch(setUser(formData));
-      navigate(paths.home);
+      await dispatch(registrationUser(formData));
+      // navigate(paths.home);
     } catch (e) {
-      setError(`${e.response.data.err.messagee}`);
+      console.log(e);
     }
   };
 

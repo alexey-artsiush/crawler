@@ -9,7 +9,7 @@ import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
 import { FileUpload } from '../FileUpload';
 import { Input } from '../Input';
-import { selectState, selectUser } from '../../store/user/userSlice';
+import { selectUser } from '../../store/user/userSlice';
 import { Autocomplete } from '../Autocomplete/Autocomplete';
 import { Spinner } from '../Spinner';
 import { createApartment } from '../../store/apartment/apartmentSlice';
@@ -17,7 +17,6 @@ import paths from '../../utils/paths';
 import './CreateApartmentForm.scss';
 
 export const CreateApartmentForm = () => {
-  const isAuth = useSelector(selectState);
   const user = useSelector(selectUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -93,10 +92,10 @@ export const CreateApartmentForm = () => {
   ]);
 
   useEffect(() => {
-    if (!isAuth) {
+    if (!user) {
       navigate(paths.home);
     }
-  }, [isAuth]);
+  }, [user]);
 
   const createFormApartment = () => {
     const formData = new FormData();

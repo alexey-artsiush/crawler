@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter, setFilterLease, setFilterLocation, setFilterRooms } from '../../store/filter/filterSlice';
+import { selectFilter, setFilterLease, setFilterLocation, setFilterMaxPrice, setFilterMinPrice, setFilterRooms } from '../../store/filter/filterSlice';
 import { Dropdown } from '../Dropdown';
+import { Input } from '../Input';
 import { Button } from '../Button';
 import { getApartment } from '../../store/apartment/apartmentSlice';
 import paths from '../../utils/paths';
@@ -16,11 +17,15 @@ export const Filter = () => {
   const [city, setSelectedLocation] = useState(filter.location);
   const [leavingRoom, setSelectedRooms] = useState(filter.leavingRoom);
   const [rentalPeriod, setSelectedRentalPeriod] = useState(filter.rentalPeriod);
+  const [minPrice, setMinPrice] = useState(filter.minPrice);
+  const [maxPrice, setMaxPrice] = useState(filter.maxPrice);
 
   useEffect(() => {
     dispatch(setFilterLocation(city));
     dispatch(setFilterRooms(leavingRoom));
     dispatch(setFilterLease(rentalPeriod));
+    dispatch(setFilterMinPrice(minPrice));
+    dispatch(setFilterMaxPrice(maxPrice));
   }, []);
 
   const click = () => {
@@ -29,6 +34,8 @@ export const Filter = () => {
         city,
         leavingRoom,
         rentalPeriod,
+        minPrice,
+        maxPrice,
       })
     );
     navigate(paths.apartment);
@@ -43,55 +50,74 @@ export const Filter = () => {
         </div>
       </div>
       <div className="filter-panel">
-        <div className="filter-point">
-          <div className="filter-title">
-            <span>Location</span>
+        <div className="filter-dropdown-wrapper">
+          <div className="filter-point">
+            <div className="filter-title">
+              <span>Location</span>
+            </div>
+            <Dropdown
+              size="m"
+              selected={city}
+              setSelected={setSelectedLocation}
+              options={[
+                'Minsk',
+                'Grodno',
+                'Brest',
+                'Mogilev',
+                'Gomel',
+                'Vitebsk',
+              ]}
+            />
           </div>
-          <Dropdown
-            size="m"
-            selected={city}
-            setSelected={setSelectedLocation}
-            options={[
-              'Minsk',
-              'Grodno',
-              'Brest',
-              'Mogilev',
-              'Gomel',
-              'Vitebsk',
-            ]}
-          />
-        </div>
-        <div className="filter-point">
-          <div className="filter-title">
-            <span>Rooms</span>
+          <div className="filter-point">
+            <div className="filter-title">
+              <span>Rooms</span>
+            </div>
+            <Dropdown
+              size="m"
+              selected={leavingRoom}
+              setSelected={setSelectedRooms}
+              options={[1, 2, 3, 4]}
+            />
           </div>
-          <Dropdown
-            size="m"
-            selected={leavingRoom}
-            setSelected={setSelectedRooms}
-            options={[1, 2, 3, 4]}
-          />
-        </div>
-        <div className="filter-point">
-          <div className="filter-title">
-            <span>Lease</span>
+          <div className="filter-point">
+            <div className="filter-title">
+              <span>Lease</span>
+            </div>
+            <Dropdown
+              size="m"
+              selected={rentalPeriod}
+              setSelected={setSelectedRentalPeriod}
+              options={['short-term', 'long-term']}
+            />
           </div>
-          <Dropdown
-            size="m"
-            selected={rentalPeriod}
-            setSelected={setSelectedRentalPeriod}
-            options={['short-term', 'long-term']}
-          />
         </div>
-        <div className="filter-wrapper">
-          <Button
-            type="orange"
-            onClick={() => {
-              click();
-            }}
-          >
-            Search
-          </Button>
+
+        <div className="filter-dropdown-wrapper">
+          <div className="filter-point-price">
+            <div className="filter-title">
+              <span>Price, $</span>
+            </div>
+            <div className="filter-point-wrapper">
+              <div className="filter-point">
+                <Input size="m" onChange={setMinPrice} placeholder="from" />
+              </div>
+              <div className="filter-point">
+                <Input size="m" onChange={setMaxPrice} placeholder="to" />
+              </div>
+            </div>
+          </div>
+          <div className="filter-wrapper">
+            <Button
+              size="l"
+              type="orange"
+              onClick={() => {
+                click();
+              }}
+            >
+              Search
+            </Button>
+          </div>
         </div>
       </div>
     </div>
