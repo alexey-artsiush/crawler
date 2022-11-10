@@ -1,8 +1,8 @@
+/* eslint-disable object-curly-newline */
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../store/services/userService';
-import { selectState, setIsAuth } from '../../store/user/userSlice';
+import { loginUser } from '../../store/user/userSlice';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import logo from '../../images/big-logo.png';
@@ -15,14 +15,14 @@ export const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const isAuth = useSelector(selectState);
+  const user = useSelector((state) => state.user.user);
 
-  const click = async () => {
+  const click = () => {
     try {
-      await login(email, password);
+      dispatch(loginUser({ email, password }));
       navigate(paths.personalAccount);
-      dispatch(setIsAuth(true));
     } catch (e) {
+      console.log(e);
       setError('Invalid email or password');
     }
   };
@@ -34,10 +34,10 @@ export const Auth = () => {
   };
 
   useEffect(() => {
-    if (isAuth) {
+    if (user) {
       navigate(paths.home);
     }
-  }, [isAuth]);
+  }, []);
 
   return (
     <div className="registr">

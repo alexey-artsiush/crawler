@@ -8,7 +8,7 @@ import { setLogout } from '../../store/user/userSlice';
 import { logout } from '../../store/services/userService';
 import './Header.scss';
 
-export const Header = ({ user, isAuth }) => {
+export const Header = ({ user }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -24,11 +24,13 @@ export const Header = ({ user, isAuth }) => {
           aria-hidden="true"
         />
       </div>
-      {isAuth ? (
+      {user ? (
         <div className="header-buttons">
           <div className="header-user-photo">
             <img
-              onClick={() => { navigate(paths.personalAccount); }}
+              onClick={() => {
+                navigate(paths.personalAccount);
+              }}
               aria-hidden="true"
               src={`${process.env.REACT_APP_API_URL}/${user.img}`}
               alt="user"

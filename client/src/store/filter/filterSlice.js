@@ -6,6 +6,8 @@ const filterSlice = createSlice({
     location: '',
     rooms: '',
     rentalPeriod: '',
+    minPrice: '',
+    maxPrice: '',
   },
   reducers: {
     setFilterLocation: (state, action) => {
@@ -15,6 +17,12 @@ const filterSlice = createSlice({
       state.rooms = action.payload;
     },
     setFilterLease: (state, action) => {
+      state.rentalPeriod = action.payload;
+    },
+    setFilterMinPrice: (state, action) => {
+      state.rentalPeriod = action.payload;
+    },
+    setFilterMaxPrice: (state, action) => {
       state.rentalPeriod = action.payload;
     },
   },
@@ -28,8 +36,10 @@ export const
   {
     setFilterLocation,
     setFilterRooms,
-    setFilterRange,
     setFilterLease,
+    setFilterRange,
+    setFilterMinPrice,
+    setFilterMaxPrice,
   } = filterSlice.actions;
 
 export default filterSlice.reducer;

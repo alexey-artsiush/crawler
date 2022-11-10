@@ -8,22 +8,48 @@
   margin: -3px 0 140px;
 }
 
+.filter-dropdown-wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
 .filter-panel {
   background-color: $c-white;
   border-radius: 8px;
   box-shadow: 1px 8px 30px 0 $c-grey-light;
   color: $c-blue-dark;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   margin: -69px auto;
   padding: 18px 22px;
-  width: 76%;
+  width: 50%;
 }
 
 .filter-point {
   display: flex;
   flex-wrap: wrap;
-  width: 48%;
+  justify-content: center;
+  width: 43%;
+}
+
+.filter-point-price {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 60%;
+}
+
+.filter-point-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.filter-point-wrapper-item {
+  min-width: 45%;
 }
 
 .filter-header {
@@ -36,21 +62,46 @@
 }
 
 .filter-title {
+  display: flex;
   font-size: 18px;
   font-weight: 600;
-  margin: 0;
+  justify-content: center;
+  margin-bottom: 5px;
   width: 100%;
 }
 
 .filter-wrapper {
+  width: 40%;
   margin-bottom: 0;
   margin-top: auto; 
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1478px) {
+  .filter {
+    margin-bottom: 100px;
+  }
+
+  .filter-point, .filter-title {
+    display: flex;
+    justify-content: center;
+  }
+
+  .filter-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+
   .filter-panel {
     flex-wrap: wrap;
-    height: 180px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .filter-panel {
+    flex-wrap: wrap;
+    width: 80%;
   }
 
   .filter-wrapper {
@@ -69,27 +120,20 @@
   }
 }
 
-@media (max-width: 570px) {
-  .filter {
-    margin-bottom: 100px;
-  }
-
-  .filter-header {
-    display: flex;
+@media (max-width: 690px) {
+  .filter-dropdown-wrapper {
+    max-width: 50%;
     flex-direction: column;
-    justify-content: center;
-    margin-bottom: 60px;
   }
 
-  .filter-panel {
-    flex-wrap: wrap;
-    height: 220px;
+  .filter-point-wrapper {
+    flex-direction: column;
   }
+}
 
-  .filter-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-right: 0;
-    width: 100%;
+@media (max-width: 500px) {
+  .filter-dropdown-wrapper {
+    align-items: center;
+    max-width: 90%;
   }
 }

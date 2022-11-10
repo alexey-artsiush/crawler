@@ -8,10 +8,18 @@ const User = sequelize.define('user', {
     lastName: {type: DataTypes.STRING},
     email: {type: DataTypes.STRING, unique: true, allowNull: false},
     password: {type: DataTypes.STRING, allowNull: false},
-    city: {type: DataTypes.STRING},
-    sex: {type: DataTypes.STRING},
+    city: {type: DataTypes.STRING, allowNull: false},
+    sex: {type: DataTypes.STRING, allowNull: false},
     img: {type: DataTypes.STRING}, 
-    phone: {type: DataTypes.STRING}, 
+    phone: {type: DataTypes.STRING, allowNull: false}, 
+    isActivated: {type: DataTypes.BOOLEAN, defaultValue: false},
+    activationLink: {type: DataTypes.STRING(700)},
+})
+
+const Token = sequelize.define('token', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    userId: {type: DataTypes.INTEGER},
+    refreshToken: {type: DataTypes.STRING(5000), required: true},
 })
 
 const Apartment = sequelize.define('apartment', {
@@ -62,6 +70,9 @@ const Photo = sequelize.define('photo', {
 User.hasMany(Apartment)
 Apartment.belongsTo(User)
 
+User.hasOne(Token)
+Token.belongsTo(User)
+
 Apartment.hasMany(Photo)
 Photo.belongsTo(Apartment)
 
@@ -71,4 +82,5 @@ module.exports = {
     City,
     News,
     Photo,
+    Token,
 }

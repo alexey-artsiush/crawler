@@ -1,5 +1,5 @@
 const {Apartment, Photo} = require('../models/index')
-const ApiError = require('../error/apiError')
+const ApiError = require('../exceptions/apiError')
 const fs = require('fs')
 const { Op } = require('sequelize')
 const uuid = require('uuid')
@@ -91,6 +91,7 @@ class ApartmentController {
           location: { [Op.or]: location ? [location] : [] },
           leavingRoom: { [Op.or]: leavingRoom ? [leavingRoom] : [] },
           rentalPeriod: { [Op.or]: rentalPeriod ? [rentalPeriod] : [] },
+          price: { [Op.between]: minPrice && maxPrice ? [minPrice, maxPrice] : [] },
           userId: { [Op.or]: userId ? [userId] : [] },
           premium: { [Op.or]: !!premium ? [!!premium] : [] },
         },
@@ -105,7 +106,7 @@ class ApartmentController {
 
       return res.json({apartments});
     } catch (e) {
-      next(ApiError.badRequest(e.message));
+      next(e)
     }
   }
 
@@ -129,7 +130,7 @@ class ApartmentController {
 
     return res.json({message: 'Success changes'})
     } catch (e) {
-      next(ApiError.badRequest(e.message));
+      next(e)
     }
   }
 
@@ -203,7 +204,7 @@ class ApartmentController {
 
     return res.json({message: 'Data was deleted successfully'})
     } catch (e) {
-      next(ApiError.badRequest(e.message));
+      next(e)
     }
   }
 } 
