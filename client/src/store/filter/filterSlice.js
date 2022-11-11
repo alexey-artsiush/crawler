@@ -1,3 +1,5 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
 import { createSlice } from '@reduxjs/toolkit';
 
 const filterSlice = createSlice({
@@ -32,14 +34,13 @@ export const selectFilter = (state) => {
   return state.filter;
 };
 
-export const
-  {
-    setFilterLocation,
-    setFilterRooms,
-    setFilterLease,
-    setFilterRange,
-    setFilterMinPrice,
-    setFilterMaxPrice,
-  } = filterSlice.actions;
+export const {
+  setFilterLocation,
+  setFilterRooms,
+  setFilterLease,
+  setFilterRange,
+  setFilterMinPrice,
+  setFilterMaxPrice,
+} = filterSlice.actions;
 
 export default filterSlice.reducer;

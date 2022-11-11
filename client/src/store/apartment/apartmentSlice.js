@@ -1,62 +1,85 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import apartmentService from '../services/apartmentService';
 
-export const getApartment = createAsyncThunk('GET_APARTMENT', async (filter, thunkAPI) => {
-  try {
-    return await apartmentService.getApartment(filter);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const getApartment = createAsyncThunk(
+  'GET_APARTMENT',
+  async (filter, thunkAPI) => {
+    try {
+      return await apartmentService.getApartment(filter);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const getApartmentById = createAsyncThunk('GET_APARTMENT_BY_ID', async (id, thunkAPI) => {
-  try {
-    return await apartmentService.getOneApartment(id);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const getApartmentById = createAsyncThunk(
+  'GET_APARTMENT_BY_ID',
+  async (id, thunkAPI) => {
+    try {
+      return await apartmentService.getOneApartment(id);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const getPremiumApartment = createAsyncThunk('GET_PREMIUM_APARTMENT', async (_, thunkAPI) => {
-  try {
-    return await apartmentService.getPremiumApartment();
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const getPremiumApartment = createAsyncThunk(
+  'GET_PREMIUM_APARTMENT',
+  async (_, thunkAPI) => {
+    try {
+      return await apartmentService.getPremiumApartment();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const getApartmentByUserId = createAsyncThunk('GET_USER_APARTMENT', async (userId, thunkAPI) => {
-  try {
-    return await apartmentService.getApartmentByUserId(userId);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const getApartmentByUserId = createAsyncThunk(
+  'GET_USER_APARTMENT',
+  async (userId, thunkAPI) => {
+    try {
+      return await apartmentService.getApartmentByUserId(userId);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const createApartment = createAsyncThunk('CREATE_APARTMENT', async (data, thunkAPI) => {
-  try {
-    return await apartmentService.createApartment(data);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const createApartment = createAsyncThunk(
+  'CREATE_APARTMENT',
+  async (data, thunkAPI) => {
+    try {
+      return await apartmentService.createApartment(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const updateApartment = createAsyncThunk('UPDATE_APARTMENT', async (updateData, thunkAPI) => {
-  try {
-    return await apartmentService.updateApartment(updateData);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const updateApartment = createAsyncThunk(
+  'UPDATE_APARTMENT',
+  async (updateData, thunkAPI) => {
+    try {
+      return await apartmentService.updateApartment(updateData);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const updatePremiumStatus = createAsyncThunk('UPDATE_APARTMENT_STATUS', async (data, thunkAPI) => {
-  const { apartId, premium } = data;
-  try {
-    return await apartmentService.changePremiumStatus(apartId, premium);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const updatePremiumStatus = createAsyncThunk(
+  'UPDATE_APARTMENT_STATUS',
+  async (data, thunkAPI) => {
+    const { apartId, premium } = data;
+    try {
+      return await apartmentService.changePremiumStatus(apartId, premium);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
 const apartmentSlice = createSlice({
   name: 'apartment',
@@ -83,8 +106,7 @@ const apartmentSlice = createSlice({
       state.currentApartment.premium = !state.currentApartment.premium;
     },
   },
-  extraReducers:
-  (builder) => {
+  extraReducers: (builder) => {
     builder
       .addCase(getApartment.pending, (state) => {
         state.isLoading = true;
@@ -108,10 +130,12 @@ const apartmentSlice = createSlice({
         state.isLoading = false;
         state.currentApartment = {
           ...action.payload,
-          files: action.payload.files.map((file) => Object.assign(file, {
-            id: Math.random() * Date.now(),
-            preview: URL.createObjectURL(file),
-          })),
+          files: action.payload.files.map((file) =>
+            Object.assign(file, {
+              id: Math.random() * Date.now(),
+              preview: URL.createObjectURL(file),
+            })
+          ),
         };
       })
       .addCase(getApartmentById.rejected, (state, action) => {
@@ -121,7 +145,6 @@ const apartmentSlice = createSlice({
         state.apartment = null;
       });
   },
-
 });
 
 export const selectApartment = (state) => {

@@ -16,11 +16,7 @@ export const NewsCard = ({ item }) => {
   };
   return (
     <div className="select-one">
-      <div
-        className="news-card"
-        onClick={handleClick}
-        aria-hidden="true"
-      >
+      <div className="news-card" onClick={handleClick} aria-hidden="true">
         <Cover image={item.img} />
         <div className="news-card-header">
           <div className="news-title">{item.title}</div>
@@ -28,7 +24,9 @@ export const NewsCard = ({ item }) => {
         <div className="news-card-body">
           <div className="news-short-description">{item.description}</div>
           <div className="news-card-wrapper">
-            <Button size="s" type="blue">Read more</Button>
+            <Button size="s" type="blue">
+              Read more
+            </Button>
           </div>
         </div>
       </div>

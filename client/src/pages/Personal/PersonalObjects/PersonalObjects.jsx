@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectState, selectUser } from '../../../store/user/userSlice';
@@ -6,7 +7,10 @@ import { Footer } from '../../../components/Footer';
 import { Spinner } from '../../../components/Spinner';
 import { Navigation } from '../../../components/Navigation';
 import { SearchResult } from '../../../components/SearchResult';
-import { getApartmentByUserId, selectCountUserResult } from '../../../store/userApartment/userApartmentSlice';
+import {
+  getApartmentByUserId,
+  selectCountUserResult,
+} from '../../../store/userApartment/userApartmentSlice';
 import '../Personal.scss';
 
 export const PersonalObjects = () => {
@@ -29,9 +33,11 @@ export const PersonalObjects = () => {
       <div className="personal-account-wrapper">
         <Navigation user={user} />
         <div className="personal-account-content">
-          {isLoading || !userApartment
-            ? <Spinner />
-            : <SearchResult count={countResult} apartment={userApartment} />}
+          {isLoading || !userApartment ? (
+            <Spinner />
+          ) : (
+            <SearchResult count={countResult} apartment={userApartment} />
+          )}
         </div>
       </div>
       <Footer />

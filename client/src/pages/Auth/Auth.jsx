@@ -43,11 +43,7 @@ export const Auth = () => {
     <div className="registr">
       <div className="registr-logo">
         <Link to={paths.home}>
-          <img
-            className="registr-logo-title"
-            src={logo}
-            alt="logo"
-          />
+          <img className="registr-logo-title" src={logo} alt="logo" />
         </Link>
         <h5 className="registr-logo-subtitle">Find your home here</h5>
       </div>
@@ -80,20 +76,13 @@ export const Auth = () => {
           <div className="registr-send">
             <div className="registr-error">{error}</div>
             <div className="registr-send-wrapper">
-              <Button
-                type="blue"
-                size="l"
-                onClick={click}
-              >
+              <Button type="blue" size="l" onClick={click}>
                 Login
               </Button>
             </div>
             <p className="registr-send-message">
               Don’t have an account?
-              <Link
-                className="registr-link"
-                to={paths.registration}
-              >
+              <Link className="registr-link" to={paths.registration}>
                 Registration!
               </Link>
             </p>

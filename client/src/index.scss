@@ -2,8 +2,7 @@
    v2.0-modified | 20110126
    License: none (public domain)
 */
-@import "./utils/colors.scss";
-
+@import './utils/colors.scss';
 
 html,
 body,
@@ -117,7 +116,7 @@ section {
 body {
   line-height: 1;
   color: $c-blue-dark;
-  overflow-x:hidden;
+  overflow-x: hidden;
 }
 
 ol,
@@ -449,10 +448,9 @@ textarea {
   padding: 0.2em 0;
 }
 
-
 /* Project styles */
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 body {
   font-family: 'Roboto';
@@ -481,12 +479,10 @@ h4 {
   font-size: 26px;
   font-weight: 500;
   margin: 14px 0;
-
 }
 
 h5 {
   font-size: 22px;
   font-weight: 400;
   margin: 5px 0;
-
 }

@@ -8,7 +8,9 @@ export const DetailCard = ({ title, value }) => {
         <div className="card-title-wrapper">{title}</div>
       </div>
       <div className="detail-card-value">
-        <div className="card-value-wrapper">{value === 'undefined' ? '-' : value}</div>
+        <div className="card-value-wrapper">
+          {value === 'undefined' ? '-' : value}
+        </div>
       </div>
     </div>
   );

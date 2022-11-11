@@ -50,20 +50,12 @@ export const CreateNews = () => {
   const [inputValid, setInputValid] = useState(false);
 
   useEffect(() => {
-    if (
-      !title
-      || !description
-      || !files
-    ) {
+    if (!title || !description || !files) {
       setInputValid(false);
     } else {
       setInputValid(true);
     }
-  }, [
-    title,
-    description,
-    files,
-  ]);
+  }, [title, description, files]);
 
   const editDescription = (comment) => {
     setDescription(comment);
@@ -72,10 +64,7 @@ export const CreateNews = () => {
 
   return (
     <div>
-      <Header
-        isAuth={isAuth}
-        user={user}
-      />
+      <Header isAuth={isAuth} user={user} />
       <div className="create-apartment-container">
         <Button
           onClick={() => {
@@ -130,33 +119,21 @@ export const CreateNews = () => {
         </form>
       </div>
       <Footer />
-      <Modal
-        active={errModal}
-        setActive={setErrModal}
-      >
+      <Modal active={errModal} setActive={setErrModal}>
         <div className="input-container">
           <h4>Something went wrong. Try later</h4>
           <div className="modal-error-accept">
-            <Button
-              type="orange"
-              onClick={() => setErrModal(false)}
-            >
+            <Button type="orange" onClick={() => setErrModal(false)}>
               Ok
             </Button>
           </div>
         </div>
       </Modal>
-      <Modal
-        active={successModal}
-        setActive={setSuccessModal}
-      >
+      <Modal active={successModal} setActive={setSuccessModal}>
         <div className="input-container">
           <h4>Success!</h4>
           <div className="modal-error-accept">
-            <Button
-              type="orange"
-              onClick={() => setSuccessModal(false)}
-            >
+            <Button type="orange" onClick={() => setSuccessModal(false)}>
               Ok
             </Button>
           </div>

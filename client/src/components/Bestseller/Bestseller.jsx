@@ -53,16 +53,11 @@ export const Bestseller = ({ topApartment }) => {
       <div className="chat-content">
         <div className="">
           <Slider {...settings}>
-            {topApartment
-              ? topApartment.map((apartment) => {
-                return (
-                  <TopApartmentCard
-                    apartment={apartment}
-                    key={apartment.id}
-                  />
-                );
-              })
-              : null}
+            {topApartment.map((apartment) => {
+              return (
+                <TopApartmentCard apartment={apartment} key={apartment.id} />
+              );
+            })}
           </Slider>
         </div>
       </div>

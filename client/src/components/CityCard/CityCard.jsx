@@ -14,21 +14,16 @@ export const CityCard = ({ location }) => {
 
   const handleClick = () => {
     dispatch(setFilterLocation(city));
-    dispatch(getApartment({
-      city,
-    }));
+    dispatch(
+      getApartment({
+        city,
+      })
+    );
     navigate(paths.apartment);
   };
   return (
-    <div
-      className="city-item"
-      aria-hidden="true"
-      onClick={handleClick}
-    >
-      <Cover
-        name={location.city}
-        image={location.img}
-      />
+    <div className="city-item" aria-hidden="true" onClick={handleClick}>
+      <Cover name={location.city} image={location.img} />
     </div>
   );
 };

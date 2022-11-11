@@ -11,7 +11,7 @@
   },
   "plugins": ["react"],
   "rules": {
-   "import/prefer-default-export": "off",
+    "import/prefer-default-export": "off",
     "no-param-reassign": 0,
     "react/prop-types": [0],
     "object-curly-newline": [

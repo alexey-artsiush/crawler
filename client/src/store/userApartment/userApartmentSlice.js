@@ -1,13 +1,17 @@
+/* eslint-disable operator-linebreak */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import apartmentService from '../services/apartmentService';
 
-export const getApartmentByUserId = createAsyncThunk('GET_USER_APARTMENT', async (userId, thunkAPI) => {
-  try {
-    return await apartmentService.getApartmentByUserId(userId);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const getApartmentByUserId = createAsyncThunk(
+  'GET_USER_APARTMENT',
+  async (userId, thunkAPI) => {
+    try {
+      return await apartmentService.getApartmentByUserId(userId);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
 const apartmentSlice = createSlice({
   name: 'user-aoartment',
@@ -29,8 +33,7 @@ const apartmentSlice = createSlice({
       state.userApartment = action.payload;
     },
   },
-  extraReducers:
-  (builder) => {
+  extraReducers: (builder) => {
     builder
       .addCase(getApartmentByUserId.pending, (state) => {
         state.isLoading = true;
@@ -47,7 +50,6 @@ const apartmentSlice = createSlice({
         state.userApartment = null;
       });
   },
-
 });
 
 export const selectUserApartment = (state) => {
@@ -60,5 +62,6 @@ export const selectCountUserResult = (state) => {
   return state.userApartment.totalCount;
 };
 
-export const { setCurrentApartment, setApartments, setUserApartment } = apartmentSlice.actions;
+export const { setCurrentApartment, setApartments, setUserApartment } =
+  apartmentSlice.actions;
 export default apartmentSlice.reducer;

@@ -1,6 +1,13 @@
+/* eslint-disable object-curly-newline */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectApartment, getApartment, selectApartmentLoading, selectLimitCards, selectCountResult } from '../../store/apartment/apartmentSlice';
+import {
+  selectApartment,
+  getApartment,
+  selectApartmentLoading,
+  selectLimitCards,
+  selectCountResult,
+} from '../../store/apartment/apartmentSlice';
 import { Button } from '../../components/Button';
 import { Filter } from '../../components/Filter';
 import { Footer } from '../../components/Footer';

@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/jsx-fragments */
 /* eslint-disable no-unneeded-ternary */
@@ -58,18 +59,18 @@ export const CreateApartmentForm = () => {
 
   useEffect(() => {
     if (
-      !title
-      || !address
-      || !description
-      || !price
-      || !square
-      || !room
-      || !bathroom
-      || !parkingSpace
-      || !yearBuilt
-      || !floor
-      || !location
-      || !rentalPeriod
+      !title ||
+      !address ||
+      !description ||
+      !price ||
+      !square ||
+      !room ||
+      !bathroom ||
+      !parkingSpace ||
+      !yearBuilt ||
+      !floor ||
+      !location ||
+      !rentalPeriod
     ) {
       setInputValid(false);
     } else {
@@ -271,10 +272,7 @@ export const CreateApartmentForm = () => {
           </div>
         </div>
         <h4>Add address</h4>
-        <Autocomplete
-          isLoaded={isLoaded}
-          placeholder={address}
-        >
+        <Autocomplete isLoaded={isLoaded} placeholder={address}>
           <React.Fragment />
         </Autocomplete>
         <Button

@@ -21,10 +21,9 @@ export const Home = () => {
   const [topApartment, setTopApartment] = useState([]);
 
   useEffect(() => {
-    dispatch(getPremiumApartment())
-      .then((data) => {
-        setTopApartment(data.payload.apartments.rows);
-      });
+    dispatch(getPremiumApartment()).then((data) => {
+      setTopApartment(data.payload.apartments.rows);
+    });
     dispatch(getNews());
     dispatch(getCity());
   }, [dispatch]);

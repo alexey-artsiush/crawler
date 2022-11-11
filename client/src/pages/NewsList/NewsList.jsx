@@ -39,14 +39,12 @@ export const NewsList = () => {
         {news ? (
           news.map((item) => {
             return (
-              <NewsCard
-                data-testid="news-item"
-                item={item}
-                key={item.id}
-              />
+              <NewsCard data-testid="news-item" item={item} key={item.id} />
             );
           })
-        ) : <h4>No news today... Come back tomorrow</h4>}
+        ) : (
+          <h4>No news today... Come back tomorrow</h4>
+        )}
       </div>
       <Footer />
     </div>

@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/jsx-fragments */
 /* eslint-disable no-unneeded-ternary */
@@ -53,18 +54,18 @@ export const EditApartmentForm = ({ apartment }) => {
 
   useEffect(() => {
     if (
-      !title
-      || !address
-      || !description
-      || !price
-      || !square
-      || !room
-      || !bathroom
-      || !parkingSpace
-      || !yearBuilt
-      || !floor
-      || !location
-      || !rentalPeriod
+      !title ||
+      !address ||
+      !description ||
+      !price ||
+      !square ||
+      !room ||
+      !bathroom ||
+      !parkingSpace ||
+      !yearBuilt ||
+      !floor ||
+      !location ||
+      !rentalPeriod
     ) {
       setInputValid(false);
     } else {
@@ -276,10 +277,7 @@ export const EditApartmentForm = ({ apartment }) => {
             </div>
           </div>
           <h4>Add address</h4>
-          <Autocomplete
-            isLoaded={isLoaded}
-            placeholder={address}
-          >
+          <Autocomplete isLoaded={isLoaded} placeholder={address}>
             <React.Fragment />
           </Autocomplete>
           <Button
@@ -290,23 +288,14 @@ export const EditApartmentForm = ({ apartment }) => {
           >
             Update
           </Button>
-          <Button
-            onClick={() => setConfirmModal(true)}
-            type="orange"
-          >
+          <Button onClick={() => setConfirmModal(true)} type="orange">
             Delete
           </Button>
-          <Modal
-            active={confirmModal}
-            setActive={setConfirmModal}
-          >
+          <Modal active={confirmModal} setActive={setConfirmModal}>
             <div className="modal-container">
               <h4>Are you sure?</h4>
               <div className="modal-error-accept">
-                <Button
-                  type="orange"
-                  onClick={() => setConfirmModal(false)}
-                >
+                <Button type="orange" onClick={() => setConfirmModal(false)}>
                   Yes
                 </Button>
               </div>

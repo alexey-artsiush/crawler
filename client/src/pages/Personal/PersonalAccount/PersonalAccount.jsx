@@ -31,14 +31,16 @@ export const PersonalAccount = () => {
     <div className="personal-account">
       <Header user={user} />
       <div className="personal-account-wrapper">
-        {user.isActivated
-          ? (
-            <>
-              <Navigation user={user} />
-              <UserPersonalForm user={user} />
-            </>
-          )
-          : <h1 className="activate-message">Check your mail and activate your account </h1>}
+        {user.isActivated ? (
+          <>
+            <Navigation user={user} />
+            <UserPersonalForm user={user} />
+          </>
+        ) : (
+          <h1 className="activate-message">
+            Check your mail and activate your account
+          </h1>
+        )}
       </div>
       <Footer />
     </div>

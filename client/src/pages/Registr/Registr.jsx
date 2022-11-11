@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable no-unneeded-ternary */
 /* eslint-disable object-curly-newline */
 import React, { useEffect, useState } from 'react';
@@ -37,14 +38,14 @@ export const Registr = () => {
 
   useEffect(() => {
     if (
-      firstName.isEmpty
-      || lastName.isEmpty
-      || email.emailError
-      || password.minLengthError
-      || phone.phoneError
-      || !city
-      || !sex
-      || !img
+      firstName.isEmpty ||
+      lastName.isEmpty ||
+      email.emailError ||
+      password.minLengthError ||
+      phone.phoneError ||
+      !city ||
+      !sex ||
+      !img
     ) {
       setInputValid(false);
     } else {
@@ -74,11 +75,7 @@ export const Registr = () => {
     <div className="registr">
       <div className="registr-logo">
         <Link to={paths.home}>
-          <img
-            className="registr-logo-title"
-            src={logo}
-            alt="logo"
-          />
+          <img className="registr-logo-title" src={logo} alt="logo" />
         </Link>
         <h5 className="registr-logo-subtitle">Find your home here</h5>
       </div>
@@ -204,10 +201,7 @@ export const Registr = () => {
             </div>
             <p className="registr-send-message">
               Already have an account?
-              <Link
-                className="registr-link"
-                to={paths.auth}
-              >
+              <Link className="registr-link" to={paths.auth}>
                 Login!
               </Link>
             </p>

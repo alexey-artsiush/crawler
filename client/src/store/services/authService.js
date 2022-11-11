@@ -3,13 +3,15 @@ import authHost from './index';
 export default class AuthService {
   static async login(email, password) {
     return authHost.post('/login', {
-      email, password,
+      email,
+      password,
     });
   }
 
   static async registration(email, password) {
     return authHost.post('/registration', {
-      email, password,
+      email,
+      password,
     });
   }
 

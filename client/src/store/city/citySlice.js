@@ -1,3 +1,5 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import cityService from '../services/cityService';
 
@@ -19,8 +21,7 @@ const citySlice = createSlice({
       state.city = action.payload;
     },
   },
-  extraReducers:
-  (builder) => {
+  extraReducers: (builder) => {
     builder
       .addCase(getCity.pending, (state) => {
         state.isLoading = true;
@@ -34,7 +35,6 @@ const citySlice = createSlice({
         state.city = null;
       });
   },
-
 });
 
 // eslint-disable-next-line semi, no-unused-expressions

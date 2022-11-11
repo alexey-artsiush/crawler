@@ -5,7 +5,9 @@ import './SearchResult.scss';
 export const SearchResult = ({ apartment, count }) => {
   return (
     <div className="search-result" data-testid="result-apartmentId">
-      {`Found ${count} ${count === 1 || count === 0 ? 'apartment' : 'apartments'} `}
+      {`Found ${count} ${
+        count === 1 || count === 0 ? 'apartment' : 'apartments'
+      } `}
       <div className="search-cards">
         {apartment ? (
           apartment.map((apart) => {

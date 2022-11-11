@@ -23,17 +23,19 @@ export const News = () => {
       <Header isAuth={isAuth} user={user} />
       <PropertyBlock />
       <div className="news-list">
-        <Button onClick={() => { navigate(-1); }} type="orange">
+        <Button
+          onClick={() => {
+            navigate(-1);
+          }}
+          type="orange"
+        >
           {'< Back'}
         </Button>
         <div className="news-list-title">
           <h4>{news.title}</h4>
           <span>{` ${dateCreate} ${timeCreate}`}</span>
         </div>
-        <Cover
-          size="m"
-          image={news.img}
-        />
+        <Cover size="m" image={news.img} />
         {news.description}
       </div>
       <Footer />

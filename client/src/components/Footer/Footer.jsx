@@ -6,10 +6,7 @@ export const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-logo">
-        <img
-          src={logo}
-          alt="logo Crawler"
-        />
+        <img src={logo} alt="logo Crawler" />
       </div>
       <div className="footer-column">
         <div className="footer-column-header">

@@ -6,12 +6,17 @@ const getNews = async () => {
 };
 
 const getOneNews = async (id) => {
-  const news = await host.get(`${process.env.REACT_APP_API_URL}/api/news/:${id}`);
+  const news = await host.get(
+    `${process.env.REACT_APP_API_URL}/api/news/:${id}`
+  );
   return news.data;
 };
 
 const createNews = async (newsData) => {
-  const news = await authHost.post(`${process.env.REACT_APP_API_URL}/api/news`, newsData);
+  const news = await authHost.post(
+    `${process.env.REACT_APP_API_URL}/api/news`,
+    newsData
+  );
   return news.data;
 };
 

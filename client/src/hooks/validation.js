@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable no-case-declarations */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable guard-for-in */
@@ -23,7 +24,8 @@ export const useValidation = (value, validations) => {
           value ? setEmpty(false) : setEmpty(true);
           break;
         case 'isEmail':
-          const email = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          const email =
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           email.test(String(value).toLowerCase())
             ? setEmailError(false)
             : setEmailError(true);

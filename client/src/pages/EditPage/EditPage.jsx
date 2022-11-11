@@ -1,9 +1,13 @@
+/* eslint-disable object-curly-newline */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
-import { getApartmentById, selectCurrentApartment } from '../../store/apartment/apartmentSlice';
+import {
+  getApartmentById,
+  selectCurrentApartment,
+} from '../../store/apartment/apartmentSlice';
 import { selectState, selectUser } from '../../store/user/userSlice';
 import { Spinner } from '../../components/Spinner';
 import { EditApartmentForm } from '../../components/EditApartmentForm';
@@ -24,9 +28,11 @@ export const EditPage = () => {
   return (
     <div>
       <Header isAuth={isAuth} user={user} />
-      {loading || !apartment
-        ? <Spinner />
-        : <EditApartmentForm apartment={apartment} />}
+      {loading || !apartment ? (
+        <Spinner />
+      ) : (
+        <EditApartmentForm apartment={apartment} />
+      )}
       <Footer />
     </div>
   );

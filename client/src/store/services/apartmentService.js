@@ -28,7 +28,9 @@ const getOneApartment = async (id) => {
   if (status === 200) {
     const files = [];
     for (let i = 0; i < data.photos.length; i++) {
-      const file = await fetch(`${process.env.REACT_APP_API_URL}/${data.photos[i].img}`)
+      const file = await fetch(
+        `${process.env.REACT_APP_API_URL}/${data.photos[i].img}`
+      )
         .then((r) => r.blob())
         .then(
           (blobFile) =>
@@ -40,9 +42,10 @@ const getOneApartment = async (id) => {
       files.push(file);
     }
     return {
-      ...data, files,
+      ...data,
+      files,
     };
-  // eslint-disable-next-line no-else-return
+    // eslint-disable-next-line no-else-return
   } else return data;
 };
 
@@ -52,7 +55,10 @@ const createApartment = async (apartmentData) => {
 };
 
 const updateApartment = async (apartmentData) => {
-  const apartment = await host.put('/api/apartment/update-apartment', apartmentData);
+  const apartment = await host.put(
+    '/api/apartment/update-apartment',
+    apartmentData
+  );
   return apartment.data;
 };
 
@@ -67,7 +73,8 @@ const getPremiumApartment = async () => {
 
 const changePremiumStatus = async (id, premium) => {
   const status = await authHost.put('/api/apartment/change-premium', {
-    id, premium,
+    id,
+    premium,
   });
   return status;
 };

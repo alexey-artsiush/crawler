@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable consistent-return */
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
@@ -13,7 +14,8 @@ const registration = async (user) => {
 const login = async (userData) => {
   const { email, password } = userData;
   const { data } = await authHost.post('/api/user/login', {
-    email, password,
+    email,
+    password,
   });
   localStorage.setItem('token', data.accessToken);
   return jwtDecode(data.accessToken);
@@ -30,9 +32,12 @@ const logout = async () => {
 
 const check = async () => {
   try {
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/refresh`, {
-      withCredentials: true,
-    });
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/user/refresh`,
+      {
+        withCredentials: true,
+      }
+    );
     localStorage.setItem('token', response.data.accessToken);
     return response.data.user;
   } catch (e) {
@@ -54,9 +59,7 @@ const getPhoto = async (img) => {
   return photo;
 };
 
-export {
-  registration, login, check, logout, getPhoto, updateUser
-};
+export { registration, login, check, logout, getPhoto, updateUser };
 
 const userService = {
   registration,

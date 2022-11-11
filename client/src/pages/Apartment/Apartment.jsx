@@ -1,3 +1,6 @@
+/* eslint-disable indent */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
@@ -11,7 +14,10 @@ import { DetailCard } from '../../components/DetailCard';
 import { Header } from '../../components/Header';
 import { Cover } from '../../components/Cover';
 import { Footer } from '../../components/Footer';
-import { getApartmentById, selectCurrentApartment } from '../../store/apartment/apartmentSlice';
+import {
+  getApartmentById,
+  selectCurrentApartment,
+} from '../../store/apartment/apartmentSlice';
 import { Map } from '../../components/Map';
 import { selectState, selectUser } from '../../store/user/userSlice';
 import { OwnerCard } from '../../components/OwnerCard';
@@ -112,8 +118,8 @@ export const Apartment = () => {
         <Slider {...settings}>
           {apartment
             ? apartment.photos.map((image) => (
-              <Cover key={image.img} size="m" image={image.img} />
-            ))
+                <Cover key={image.img} size="m" image={image.img} />
+              ))
             : null}
         </Slider>
 
@@ -122,42 +128,18 @@ export const Apartment = () => {
 
         <h4>Details</h4>
         <div className="apartment-details">
-          <DetailCard
-            title="Apartment ID"
-            value={apartment.id}
-          />
-          <DetailCard
-            title="Price"
-            value={`${apartment.price} $`}
-          />
-          <DetailCard
-            title="Square"
-            value={apartment.square}
-          />
-          <DetailCard
-            title="Room"
-            value={apartment.leavingRoom}
-          />
-          <DetailCard
-            title="Metro"
-            value={apartment.metro}
-          />
-          <DetailCard
-            title="Floor"
-            value={apartment.floor}
-          />
-          <DetailCard
-            title="Year built"
-            value={apartment.yearBuilt}
-          />
+          <DetailCard title="Apartment ID" value={apartment.id} />
+          <DetailCard title="Price" value={`${apartment.price} $`} />
+          <DetailCard title="Square" value={apartment.square} />
+          <DetailCard title="Room" value={apartment.leavingRoom} />
+          <DetailCard title="Metro" value={apartment.metro} />
+          <DetailCard title="Floor" value={apartment.floor} />
+          <DetailCard title="Year built" value={apartment.yearBuilt} />
           <DetailCard
             title="Address"
             value={`${apartment?.location}, ${apartment?.address}`}
           />
-          <DetailCard
-            title="Rental period"
-            value={apartment.rentalPeriod}
-          />
+          <DetailCard title="Rental period" value={apartment.rentalPeriod} />
         </div>
 
         <h4>Address</h4>

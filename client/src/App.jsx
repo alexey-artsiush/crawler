@@ -27,58 +27,19 @@ const App = () => {
 
   return (
     <Routes>
-      <Route
-        path={paths.home}
-        element={<Home />}
-      />
-      <Route
-        path={paths.apartment}
-        element={<Search />}
-      />
-      <Route
-        path={`${paths.apartment}/:id`}
-        element={<Apartment />}
-      />
-      <Route
-        path={paths.auth}
-        element={<Auth />}
-      />
-      <Route
-        path={paths.registration}
-        element={<Registr />}
-      />
-      <Route
-        path={paths.personalAccount}
-        element={<PersonalAccount />}
-      />
-      <Route
-        path={`${paths.news}/:id`}
-        element={<News />}
-      />
-      <Route
-        path={paths.news}
-        element={<NewsList />}
-      />
-      <Route
-        path={paths.createApartment}
-        element={<CreateApartment />}
-      />
-      <Route
-        path={paths.personalObjects}
-        element={<PersonalObjects />}
-      />
-      <Route
-        path={paths.personalNews}
-        element={<CreateNews />}
-      />
-      <Route
-        path={`${paths.editPage}/:id`}
-        element={<EditPage />}
-      />
-      <Route
-        path="*"
-        element={<Navigate to={paths.home} replace />}
-      />
+      <Route path={paths.home} element={<Home />} />
+      <Route path={paths.apartment} element={<Search />} />
+      <Route path={`${paths.apartment}/:id`} element={<Apartment />} />
+      <Route path={paths.auth} element={<Auth />} />
+      <Route path={paths.registration} element={<Registr />} />
+      <Route path={paths.personalAccount} element={<PersonalAccount />} />
+      <Route path={`${paths.news}/:id`} element={<News />} />
+      <Route path={paths.news} element={<NewsList />} />
+      <Route path={paths.createApartment} element={<CreateApartment />} />
+      <Route path={paths.personalObjects} element={<PersonalObjects />} />
+      <Route path={paths.personalNews} element={<CreateNews />} />
+      <Route path={`${paths.editPage}/:id`} element={<EditPage />} />
+      <Route path="*" element={<Navigate to={paths.home} replace />} />
     </Routes>
   );
 };

@@ -2,53 +2,71 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import userService from '../services/userService';
 
-export const getUserPhoto = createAsyncThunk('GET_USER_PHOTO', async (img, thunkAPI) => {
-  try {
-    return await userService.getPhoto(img);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const getUserPhoto = createAsyncThunk(
+  'GET_USER_PHOTO',
+  async (img, thunkAPI) => {
+    try {
+      return await userService.getPhoto(img);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const updateUser = createAsyncThunk('UPDATE_USER', async (formDataUser, thunkAPI) => {
-  try {
-    return await userService.updateUser(formDataUser);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const updateUser = createAsyncThunk(
+  'UPDATE_USER',
+  async (formDataUser, thunkAPI) => {
+    try {
+      return await userService.updateUser(formDataUser);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const registrationUser = createAsyncThunk('REGISTRATION_USER', async (user, thunkAPI) => {
-  try {
-    return await userService.registration(user);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const registrationUser = createAsyncThunk(
+  'REGISTRATION_USER',
+  async (user, thunkAPI) => {
+    try {
+      return await userService.registration(user);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const loginUser = createAsyncThunk('LOGIN_USER', async (userData, thunkAPI) => {
-  try {
-    return await userService.login(userData);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const loginUser = createAsyncThunk(
+  'LOGIN_USER',
+  async (userData, thunkAPI) => {
+    try {
+      return await userService.login(userData);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const logoutUser = createAsyncThunk('LOGOUT_USER', async (_, thunkAPI) => {
-  try {
-    return await userService.logout();
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const logoutUser = createAsyncThunk(
+  'LOGOUT_USER',
+  async (_, thunkAPI) => {
+    try {
+      return await userService.logout();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const checkAuth = createAsyncThunk('CHECK_AUTH_USER', async (_, thunkAPI) => {
-  try {
-    return await userService.check();
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const checkAuth = createAsyncThunk(
+  'CHECK_AUTH_USER',
+  async (_, thunkAPI) => {
+    try {
+      return await userService.check();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
 const initialState = {
   user: null,
@@ -71,8 +89,7 @@ const userSlice = createSlice({
       state.error = action.payload;
     },
   },
-  extraReducers:
-  (builder) => {
+  extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;

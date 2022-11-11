@@ -18,9 +18,7 @@ export const Modal = ({ active, setActive, children }) => {
       >
         <div className="modal-container">
           <Button size="s" type="orange" onClick={() => setActive(false)}>
-            <FontAwesomeIcon
-              icon={faTimes}
-            />
+            <FontAwesomeIcon icon={faTimes} />
           </Button>
         </div>
         {children}

@@ -121,15 +121,9 @@ export const UserPersonalForm = ({ user }) => {
           </div>
         </div>
         <div className="personal-photo">
-          <Cover
-            size="m"
-            image={user.img}
-          />
+          <Cover size="m" image={user.img} />
           <div className="personal-photo-update">
-            <input
-              type="file"
-              onChange={setImg}
-            />
+            <input type="file" onChange={setImg} />
             <button type="button">
               <FontAwesomeIcon icon={faDownload} />
               Upload
@@ -138,10 +132,7 @@ export const UserPersonalForm = ({ user }) => {
           <div className="list-upload">
             {img ? `${img}` : ''}
             {img ? (
-              <button
-                type="button"
-                onClick={() => setImg('')}
-              >
+              <button type="button" onClick={() => setImg('')}>
                 <FontAwesomeIcon icon={faTrash} />
               </button>
             ) : null}

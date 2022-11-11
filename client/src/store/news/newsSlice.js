@@ -1,3 +1,6 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import newsService from '../services/newsService';
 
@@ -9,21 +12,22 @@ export const getNews = createAsyncThunk('GET_NEWS', async (_, thunkAPI) => {
   }
 });
 
-export const createNews = createAsyncThunk('CREATE_NEWS', async (data, thunkAPI) => {
-  try {
-    return await newsService.createNews(data);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+export const createNews = createAsyncThunk(
+  'CREATE_NEWS',
+  async (data, thunkAPI) => {
+    try {
+      return await newsService.createNews(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
 const newsSlice = createSlice({
   name: 'news',
   initialState: {
     news: [],
-    currentNews: {
-
-    },
+    currentNews: {},
     isError: false,
     isLoading: false,
     message: '',

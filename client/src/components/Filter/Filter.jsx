@@ -1,7 +1,15 @@
+/* eslint-disable object-curly-newline */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter, setFilterLease, setFilterLocation, setFilterMaxPrice, setFilterMinPrice, setFilterRooms } from '../../store/filter/filterSlice';
+import {
+  selectFilter,
+  setFilterLease,
+  setFilterLocation,
+  setFilterMaxPrice,
+  setFilterMinPrice,
+  setFilterRooms,
+} from '../../store/filter/filterSlice';
 import { Dropdown } from '../Dropdown';
 import { Input } from '../Input';
 import { Button } from '../Button';
