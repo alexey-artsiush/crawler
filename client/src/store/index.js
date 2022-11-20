@@ -1,6 +1,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 import { configureStore } from '@reduxjs/toolkit';
 import apartmentSlice from './apartment/apartmentSlice';
+import premiumApartmentSlice from './premiumApartment/premiumApartmentSlice';
 import userApartmentSlice from './userApartment/userApartmentSlice';
 import filterSlice from './filter/filterSlice';
 import userSlice from './user/userSlice';
@@ -12,6 +13,7 @@ const store = configureStore({
     user: userSlice,
     filter: filterSlice,
     apartment: apartmentSlice,
+    premiumApartment: premiumApartmentSlice,
     userApartment: userApartmentSlice,
     news: newsSlice,
     city: citySlice,

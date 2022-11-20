@@ -1,4 +1,4 @@
-@import "../../utils/colors.scss";
+@import '../../utils/colors.scss';
 
 .search-cards {
   align-items: center;
@@ -13,6 +13,7 @@
   margin: 0 auto;
   padding-top: 11px;
   width: 97%;
+  min-height: 300px;
 }
 
 .search-result-options {

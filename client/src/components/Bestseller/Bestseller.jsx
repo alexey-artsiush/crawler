@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import Slider from 'react-slick';
@@ -53,11 +54,16 @@ export const Bestseller = ({ topApartment }) => {
       <div className="chat-content">
         <div className="">
           <Slider {...settings}>
-            {topApartment.map((apartment) => {
-              return (
-                <TopApartmentCard apartment={apartment} key={apartment.id} />
-              );
-            })}
+            {topApartment
+              ? topApartment.map((apartment) => {
+                  return (
+                    <TopApartmentCard
+                      apartment={apartment}
+                      key={apartment.id}
+                    />
+                  );
+                })
+              : null}
           </Slider>
         </div>
       </div>

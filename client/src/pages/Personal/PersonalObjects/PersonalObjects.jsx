@@ -1,7 +1,12 @@
 /* eslint-disable object-curly-newline */
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectState, selectUser } from '../../../store/user/userSlice';
+import {
+  checkAuth,
+  selectState,
+  selectUser,
+} from '../../../store/user/userSlice';
 import { Header } from '../../../components/Header';
 import { Footer } from '../../../components/Footer';
 import { Spinner } from '../../../components/Spinner';
@@ -11,9 +16,11 @@ import {
   getApartmentByUserId,
   selectCountUserResult,
 } from '../../../store/userApartment/userApartmentSlice';
+import paths from '../../../utils/paths';
 import '../Personal.scss';
 
 export const PersonalObjects = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuth = useSelector(selectState);
   const user = useSelector(selectUser);
@@ -22,10 +29,17 @@ export const PersonalObjects = () => {
   const { isLoading } = useSelector((state) => state.userApartment);
 
   useEffect(() => {
-    dispatch(getApartmentByUserId(user.id));
+    if (localStorage.getItem('token')) {
+      dispatch(checkAuth());
+    } else if (!user) {
+      navigate(paths.home);
+    }
+    if (user) {
+      dispatch(getApartmentByUserId(user.id));
+    }
   }, [dispatch]);
 
-  if (isLoading) return <Spinner />;
+  if (isLoading || !user) return <Spinner />;
 
   return (
     <div className="personal-account">

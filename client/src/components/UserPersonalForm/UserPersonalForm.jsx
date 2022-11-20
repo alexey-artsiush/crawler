@@ -66,7 +66,7 @@ export const UserPersonalForm = ({ user }) => {
   }
 
   return (
-    <div>
+    <div className="personal-account-cont">
       <div className="personal-account-content">
         <div className="personal-account-items">
           <Input

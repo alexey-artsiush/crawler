@@ -1,4 +1,8 @@
-@import "../../utils/colors.scss";
+@import '../../utils/colors.scss';
+
+.personal-account-cont {
+  width: 65%;
+}
 
 .personal-account-wrapper {
   display: flex;
@@ -29,8 +33,12 @@
 }
 
 @keyframes ani {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .personal-account-wrapper:hover .personal-info {
@@ -38,15 +46,15 @@
   opacity: 1;
 }
 
-.personal-account-menu {
+.personal-aсcount-menu {
   min-width: 180px;
-  width: 20%;
+  width: 25%;
 }
 
 .personal-account-content {
   display: flex;
   justify-content: space-around;
-  width: 80%;
+  width: 65%;
 }
 
 .create-apartment-container {
@@ -58,7 +66,9 @@
   width: 100%;
 }
 
-.create-apartment-description .container, .create-apartment-description input, .create-apartment-description {
+.create-apartment-description .container,
+.create-apartment-description input,
+.create-apartment-description {
   height: 200px;
   margin-bottom: 25px;
   max-width: 100%;
@@ -81,7 +91,11 @@
 }
 
 .create-apartment-details input {
-  width: 112px;
+  width: 110px;
+}
+
+.create-apartment-details .dropdown {
+  width: 140px;
 }
 
 .textarea {
@@ -130,7 +144,7 @@
     width: 100px;
     z-index: 2;
   }
-  
+
   .list-upload {
     display: flex;
     justify-content: center;
@@ -143,7 +157,6 @@
     width: 100%;
   }
 }
-
 
 @media (max-width: 570px) {
   .personal-account-wrapper {
@@ -164,10 +177,12 @@
     font-weight: 500;
     margin: 0 auto;
     min-width: 270px;
-    padding: 15px 0; 
+    padding: 15px 0;
   }
 
-  .navigation-item, .navigation-user, .navigation-item-active {
+  .navigation-item,
+  .navigation-user,
+  .navigation-item-active {
     font-size: 1.3rem;
   }
 

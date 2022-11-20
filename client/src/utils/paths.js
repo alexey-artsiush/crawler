@@ -9,5 +9,6 @@ const paths = {
   news: '/news',
   createApartment: '/create-apartment',
   editPage: '/edit-page',
+  chat: '/chat',
 };
 export default paths;

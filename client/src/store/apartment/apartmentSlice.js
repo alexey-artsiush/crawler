@@ -25,17 +25,6 @@ export const getApartmentById = createAsyncThunk(
   }
 );
 
-export const getPremiumApartment = createAsyncThunk(
-  'GET_PREMIUM_APARTMENT',
-  async (_, thunkAPI) => {
-    try {
-      return await apartmentService.getPremiumApartment();
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
-    }
-  }
-);
-
 export const getApartmentByUserId = createAsyncThunk(
   'GET_USER_APARTMENT',
   async (userId, thunkAPI) => {
@@ -91,6 +80,7 @@ const apartmentSlice = createSlice({
     totalCount: 0,
     limit: 7,
     isLoading: false,
+    message: null,
   },
   reducers: {
     setApartments: (state, action) => {
@@ -119,7 +109,7 @@ const apartmentSlice = createSlice({
       .addCase(getApartment.rejected, (state, action) => {
         state.isError = true;
         state.isLoading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         state.apartment = null;
       })
 
@@ -141,7 +131,7 @@ const apartmentSlice = createSlice({
       .addCase(getApartmentById.rejected, (state, action) => {
         state.isError = true;
         state.isLoading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         state.apartment = null;
       });
   },

@@ -9,8 +9,9 @@ import { Bestseller } from '../../components/Bestseller';
 import { News } from '../../components/News';
 import { Footer } from '../../components/Footer';
 import { getNews, selectNews } from '../../store/news/newsSlice';
-import { getPremiumApartment } from '../../store/apartment/apartmentSlice';
 import { getCity, selectCity } from '../../store/city/citySlice';
+import { SelectCityChat } from '../../components/SelectCityChat/SelectCityChat';
+import { getPremiumApartment } from '../../store/premiumApartment/premiumApartmentSlice';
 import './Home.scss';
 
 export const Home = () => {
@@ -18,7 +19,7 @@ export const Home = () => {
   const news = useSelector(selectNews);
   const city = useSelector(selectCity);
   const user = useSelector(selectUser);
-  const [topApartment, setTopApartment] = useState([]);
+  const [topApartment, setTopApartment] = useState(null);
 
   useEffect(() => {
     dispatch(getPremiumApartment()).then((data) => {
@@ -34,6 +35,7 @@ export const Home = () => {
       <Filter />
       <SelectCity cities={city} />
       <Bestseller topApartment={topApartment} />
+      <SelectCityChat cities={city} />
       <News news={news} />
       <Footer />
     </div>

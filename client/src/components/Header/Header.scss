@@ -1,4 +1,4 @@
-@import "../../utils/colors.scss";
+@import '../../utils/colors.scss';
 
 .header {
   background-color: $c-blue;
@@ -12,8 +12,13 @@
   display: flex;
 }
 
-.header-logo img {
-  cursor: pointer;
+.header-logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    cursor: pointer;
+  }
 }
 
 .header-user-photo {
@@ -36,7 +41,7 @@
     padding: 0;
 
     button {
-    max-width: 410px;
+      max-width: 410px;
     }
   }
 
@@ -49,7 +54,7 @@
   .header {
     flex-direction: column;
   }
-  
+
   .header-logo {
     margin: auto;
   }

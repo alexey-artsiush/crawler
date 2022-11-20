@@ -14,6 +14,7 @@ import { CreateApartment } from './pages/Personal/PersonalCreateApartment';
 import { PersonalObjects } from './pages/Personal/PersonalObjects';
 import { CreateNews } from './pages/Personal/PersonalCreateNews';
 import { checkAuth } from './store/user/userSlice';
+import { Chat } from './pages/Chat';
 import paths from './utils/paths';
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
       <Route path={paths.personalObjects} element={<PersonalObjects />} />
       <Route path={paths.personalNews} element={<CreateNews />} />
       <Route path={`${paths.editPage}/:id`} element={<EditPage />} />
+      <Route path={`${paths.chat}/:chatId`} element={<Chat />} />
       <Route path="*" element={<Navigate to={paths.home} replace />} />
     </Routes>
   );

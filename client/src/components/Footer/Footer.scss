@@ -1,4 +1,4 @@
-@import "../../utils/colors.scss";
+@import '../../utils/colors.scss';
 
 .footer {
   background-color: $c-blue;
@@ -31,7 +31,7 @@
 
 .footer-column-header {
   height: 2rem;
-  margin-bottom: 4rem;  
+  margin-bottom: 4rem;
   text-align: center;
 }
 
@@ -42,8 +42,8 @@ a {
 
 @media (max-width: 689px) {
   .footer {
-    margin: 310px auto 0;
-    padding: 20px 10px 100px;
+    margin: 0 auto;
+    padding: 20px 0px 100px;
   }
 
   .footer-column {
@@ -65,8 +65,8 @@ a {
 }
 
 @media (max-width: 570px) {
-  .footer h4, p {
+  .footer h4,
+  p {
     text-align: center;
   }
 }
-
