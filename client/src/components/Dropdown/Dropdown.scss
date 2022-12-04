@@ -1,4 +1,4 @@
-@import "../../utils/colors.scss";
+@import '../../utils/colors.scss';
 
 .dropdown {
   border: 2px solid $c-grey-light;
@@ -36,10 +36,10 @@
   font-weight: 500;
   height: 76px;
   margin: 5px;
-  padding: 15px 15px 50px
+  padding: 15px 15px 50px;
 }
 
-.dropdown .dropdown-btn{
+.dropdown .dropdown-btn {
   align-items: center;
   background: $c-white;
   border-radius: 5px;
@@ -49,7 +49,6 @@
   height: 100%;
   justify-content: center;
   margin: -4px 1px 0px;
-  padding: 3px 15px;
   width: 100%;
 }
 

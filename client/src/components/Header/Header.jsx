@@ -38,6 +38,7 @@ export const Header = ({ user }) => {
           </div>
           <Button
             type="orange"
+            size="s"
             onClick={() => {
               logout();
               navigate(paths.home);

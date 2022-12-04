@@ -1,4 +1,4 @@
-@import "../../utils/colors.scss";
+@import '../../utils/colors.scss';
 
 .navigation {
   color: $c-blue-dark;
@@ -25,6 +25,7 @@
 
     .navigation-item {
       margin: 5px 15px;
+      min-width: 80px;
     }
   }
 }

@@ -1,4 +1,4 @@
-@import "../../utils/colors.scss";
+@import '../../utils/colors.scss';
 
 .filter {
   background-color: $c-blue;
@@ -31,7 +31,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 43%;
+  width: 21%;
+  min-width: 155px;
 }
 
 .filter-point-price {
@@ -39,6 +40,13 @@
   flex-wrap: wrap;
   justify-content: center;
   width: 60%;
+
+  input {
+    background-color: #fff;
+    border: none;
+    margin: -10px 0 5px;
+    text-align: center;
+  }
 }
 
 .filter-point-wrapper {
@@ -71,9 +79,8 @@
 }
 
 .filter-wrapper {
-  width: 40%;
-  margin-bottom: 0;
-  margin-top: auto; 
+  margin-left: auto;
+  margin-right: 0;
 }
 
 @media (max-width: 1478px) {
@@ -81,7 +88,8 @@
     margin-bottom: 100px;
   }
 
-  .filter-point, .filter-title {
+  .filter-point,
+  .filter-title {
     display: flex;
     justify-content: center;
   }
@@ -104,10 +112,6 @@
     width: 80%;
   }
 
-  .filter-wrapper {
-    margin-right: 30px;
-  }
-
   .filter-header {
     display: flex;
     flex-direction: column;
@@ -120,9 +124,14 @@
   }
 }
 
+@media (max-width: 790px) {
+  .filter-point {
+    width: 35%;
+  }
+}
+
 @media (max-width: 690px) {
   .filter-dropdown-wrapper {
-    max-width: 50%;
     flex-direction: column;
   }
 
@@ -135,5 +144,9 @@
   .filter-dropdown-wrapper {
     align-items: center;
     max-width: 90%;
+  }
+
+  .filter-wrapper {
+    margin: 0;
   }
 }

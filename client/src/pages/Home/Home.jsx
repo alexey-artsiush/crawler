@@ -1,5 +1,5 @@
 /* eslint-disable no-unneeded-ternary */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../store/user/userSlice';
 import { Header } from '../../components/Header';
@@ -10,7 +10,6 @@ import { News } from '../../components/News';
 import { Footer } from '../../components/Footer';
 import { getNews, selectNews } from '../../store/news/newsSlice';
 import { getCity, selectCity } from '../../store/city/citySlice';
-import { SelectCityChat } from '../../components/SelectCityChat/SelectCityChat';
 import { getPremiumApartment } from '../../store/premiumApartment/premiumApartmentSlice';
 import './Home.scss';
 
@@ -19,12 +18,12 @@ export const Home = () => {
   const news = useSelector(selectNews);
   const city = useSelector(selectCity);
   const user = useSelector(selectUser);
-  const [topApartment, setTopApartment] = useState(null);
+  const topApartment = useSelector(
+    (state) => state.premiumApartment.premiumApartment
+  );
 
   useEffect(() => {
-    dispatch(getPremiumApartment()).then((data) => {
-      setTopApartment(data.payload.apartments.rows);
-    });
+    dispatch(getPremiumApartment());
     dispatch(getNews());
     dispatch(getCity());
   }, [dispatch]);
@@ -35,7 +34,6 @@ export const Home = () => {
       <Filter />
       <SelectCity cities={city} />
       <Bestseller topApartment={topApartment} />
-      <SelectCityChat cities={city} />
       <News news={news} />
       <Footer />
     </div>

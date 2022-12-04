@@ -22,7 +22,7 @@ const premiumApartmentSlice = createSlice({
     premiumApartment: null,
     page: 1,
     totalCount: 0,
-    limit: 7,
+    limit: 10,
     isLoading: false,
   },
   reducers: {},

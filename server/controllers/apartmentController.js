@@ -82,9 +82,12 @@ class ApartmentController {
         location,
         leavingRoom,
         rentalPeriod,
+        minPrice,
+        maxPrice,
         userId,
         premium,
       } = req.query;
+
       page = Number(page) || 1;
       limit = Number(limit) || 10;
       let offset = page * limit - limit;
@@ -96,12 +99,22 @@ class ApartmentController {
 
       const apartments = await Apartment.findAndCountAll({
         where: {
-          location: { [Op.or]: location ? [location] : [] },
-          leavingRoom: { [Op.or]: leavingRoom ? [leavingRoom] : [] },
-          rentalPeriod: { [Op.or]: rentalPeriod ? [rentalPeriod] : [] },
-          // price: {
-          //   [Op.between]: !minPrice || !maxPrice ? [] : [minPrice, maxPrice],
-          // },
+          location: {
+            [Op.or]: location === 'All offers' || !location ? [] : [location],
+          },
+          leavingRoom: {
+            [Op.or]:
+              leavingRoom === 'All offers' || !leavingRoom ? [] : [leavingRoom],
+          },
+          rentalPeriod: {
+            [Op.or]:
+              rentalPeriod === 'All offers' || !rentalPeriod
+                ? []
+                : [rentalPeriod],
+          },
+          price: {
+            [Op.between]: !minPrice || !maxPrice ? [] : [minPrice, maxPrice],
+          },
           userId: { [Op.or]: userId ? [userId] : [] },
           premium: { [Op.or]: !!premium ? [!!premium] : [] },
         },

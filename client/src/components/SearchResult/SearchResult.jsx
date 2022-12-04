@@ -6,13 +6,13 @@ import './SearchResult.scss';
 export const SearchResult = ({ apartment, count }) => {
   return (
     <div className="search-result" data-testid="result-apartmentId">
-      {apartment.length
+      {apartment
         ? `Found ${count} ${
             count === 1 || count === 0 ? 'apartment' : 'apartments'
           } `
         : null}
       <div className="search-cards">
-        {apartment.length ? (
+        {count ? (
           apartment.map((apart) => {
             return (
               <ApartmentCard

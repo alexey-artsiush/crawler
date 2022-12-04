@@ -3,12 +3,20 @@
 import { authHost, host } from './index';
 
 const getApartment = async (filter) => {
-  const { leavingRoom, city: location, rentalPeriod } = filter;
+  const {
+    leavingRoom,
+    city: location,
+    rentalPeriod,
+    minPrice,
+    maxPrice,
+  } = filter;
   const apartment = await host.get('/api/apartment', {
     params: {
       leavingRoom,
       location,
       rentalPeriod,
+      minPrice,
+      maxPrice,
     },
   });
   return apartment.data;
@@ -50,7 +58,7 @@ const getOneApartment = async (id) => {
 };
 
 const createApartment = async (apartmentData) => {
-  const apartment = await host.post('/api/apartment', apartmentData);
+  const apartment = await authHost.post('/api/apartment', apartmentData);
   return apartment.data;
 };
 

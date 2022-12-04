@@ -55,7 +55,7 @@ export const Search = () => {
         <Button type="clear">Sign in</Button>
       </Header>
       <Filter />
-      {isLoading || !currentApartment ? (
+      {isLoading ? (
         <Spinner />
       ) : (
         <SearchResult count={countResult} apartment={currentApartment} />

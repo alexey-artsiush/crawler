@@ -5,11 +5,11 @@ import { createSlice } from '@reduxjs/toolkit';
 const filterSlice = createSlice({
   name: 'filter',
   initialState: {
-    location: '',
-    rooms: '',
-    rentalPeriod: '',
-    minPrice: '',
-    maxPrice: '',
+    location: 'All offers',
+    leavingRoom: 'All offers',
+    rentalPeriod: 'All offers',
+    minPrice: 1,
+    maxPrice: 9999,
   },
   reducers: {
     setFilterLocation: (state, action) => {
@@ -22,10 +22,10 @@ const filterSlice = createSlice({
       state.rentalPeriod = action.payload;
     },
     setFilterMinPrice: (state, action) => {
-      state.rentalPeriod = action.payload;
+      state.minPrice = action.payload;
     },
     setFilterMaxPrice: (state, action) => {
-      state.rentalPeriod = action.payload;
+      state.maxPrice = action.payload;
     },
   },
 });

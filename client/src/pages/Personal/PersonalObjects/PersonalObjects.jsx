@@ -47,7 +47,7 @@ export const PersonalObjects = () => {
       <div className="personal-account-wrapper">
         <Navigation user={user} />
         <div className="personal-account-content">
-          {isLoading || !userApartment ? (
+          {isLoading ? (
             <Spinner />
           ) : (
             <SearchResult count={countResult} apartment={userApartment} />

@@ -1,7 +1,6 @@
 const nodemailer = require('nodemailer');
 
 class MailService {
-
   constructor() {
     this.transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -9,9 +8,9 @@ class MailService {
       secure: true,
       auth: {
         user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD
-      }
-    })
+        pass: process.env.SMTP_PASSWORD,
+      },
+    });
   }
 
   async sendActivationMail(to, link) {
@@ -20,14 +19,13 @@ class MailService {
       to,
       subject: 'Activation account on ' + process.env.API_URL,
       text: '',
-      html:
-        `
+      html: `
           <div>
-            <h1>Tap to link for activation</h1>
+            <h2 style="margin: 20px auto;">Thank you fot registration in Crawler <br/> Tap to link for activation your account</h2>
               <a href="${link}">${link}</a>
               </div>
-        `
-    })
+        `,
+    });
   }
 }
 
