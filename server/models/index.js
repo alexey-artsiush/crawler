@@ -68,12 +68,11 @@ const Photo = sequelize.define('photo', {
 
 const Article = sequelize.define('article', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  userId: { type: DataTypes.INTEGER, allowNull: false },
-  location: { type: DataTypes.STRING },
   title: { type: DataTypes.STRING, allowNull: false },
   description: { type: DataTypes.STRING(500), allowNull: false },
-  userName: { type: DataTypes.STRING },
-  userImage: { type: DataTypes.STRING },
+  author: { type: DataTypes.INTEGER, allowNull: false },
+  location: { type: DataTypes.STRING, allowNull: false },
+  type: { type: DataTypes.STRING, allowNull: false },
 });
 
 const Comment = sequelize.define('comment', {

@@ -16,7 +16,7 @@ export const getApartmentByUserId = createAsyncThunk(
 const apartmentSlice = createSlice({
   name: 'user-aoartment',
   initialState: {
-    userApartment: [],
+    userApartment: null,
     page: 1,
     totalCount: 0,
     limit: 10,

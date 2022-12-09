@@ -12,6 +12,7 @@ import { getNews, selectNews } from '../../store/news/newsSlice';
 import { getCity, selectCity } from '../../store/city/citySlice';
 import { getPremiumApartment } from '../../store/premiumApartment/premiumApartmentSlice';
 import './Home.scss';
+import { SelectCityChat } from '../../components/SelectCityChat/SelectCityChat';
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ export const Home = () => {
       <Filter />
       <SelectCity cities={city} />
       <Bestseller topApartment={topApartment} />
+      <SelectCityChat cities={city} />
       <News news={news} />
       <Footer />
     </div>

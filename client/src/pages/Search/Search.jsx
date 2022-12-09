@@ -27,7 +27,11 @@ export const Search = () => {
   const countResult = useSelector(selectCountResult);
   const isLoading = useSelector(selectApartmentLoading);
   const filter = useSelector(selectFilter);
-  const { location: city, leavingRoom, rentalPeriod } = filter;
+  const [city] = useState(filter.location);
+  const [leavingRoom] = useState(filter.leavingRoom);
+  const [rentalPeriod] = useState(filter.rentalPeriod);
+  const [minPrice] = useState(filter.minPrice);
+  const [maxPrice] = useState(filter.maxPrice);
 
   useEffect(() => {
     dispatch(
@@ -35,9 +39,11 @@ export const Search = () => {
         city,
         leavingRoom,
         rentalPeriod,
+        minPrice,
+        maxPrice,
       })
     );
-  }, [dispatch, city, leavingRoom, rentalPeriod]);
+  }, [city, leavingRoom, rentalPeriod, minPrice, maxPrice]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const limitPerPage = useSelector(selectLimitCards);

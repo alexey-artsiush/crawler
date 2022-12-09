@@ -1,4 +1,4 @@
-@import "../../utils/colors.scss";
+@import '../../utils/colors.scss';
 
 .modal {
   align-items: center;
@@ -31,11 +31,11 @@
 }
 
 .modal-content.active {
-  transform: scale(1)
+  transform: scale(1);
 }
 
 .modal-container h4 {
   display: flex;
   justify-content: center;
-  margin: 60px 0;
+  margin: 30px 0;
 }

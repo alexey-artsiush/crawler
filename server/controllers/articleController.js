@@ -6,16 +6,14 @@ const path = require('path');
 class ArticleController {
   async create(req, res, next) {
     try {
-      const { userId, location, title, description, userName, userImage } =
-        req.body;
+      const { title, description, author, location, type } = req.body;
 
       await Article.create({
-        userId,
-        location,
         title,
         description,
-        userName,
-        userImage,
+        author,
+        location,
+        type,
       });
 
       return res.json({ message: 'Article created successfully ' });
@@ -26,7 +24,16 @@ class ArticleController {
 
   async getAll(req, res, next) {
     try {
-      const articles = await Article.findAll();
+      const { location } = req.query;
+
+      const articles = await Article.findAndCountAll({
+        // where: {
+        //   location: {
+        //     [Op.or]: location ? [location] : [],
+        //   },
+        // },
+        // order: [['createdAt', 'DESC']],
+      });
       return res.json(articles);
     } catch (e) {
       next(e);

@@ -34,7 +34,6 @@ export const Filter = () => {
     dispatch(setFilterMinPrice(minPrice));
     dispatch(setFilterMaxPrice(maxPrice));
   }, []);
-  console.log(minPrice);
 
   const click = () => {
     dispatch(

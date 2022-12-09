@@ -7,9 +7,11 @@ import filterSlice from './filter/filterSlice';
 import userSlice from './user/userSlice';
 import newsSlice from './news/newsSlice';
 import citySlice from './city/citySlice';
+import chatArticleSlice from './chat/chatArticleSlice';
 
 const store = configureStore({
   reducer: {
+    chat: chatArticleSlice,
     user: userSlice,
     filter: filterSlice,
     apartment: apartmentSlice,

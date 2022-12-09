@@ -1,12 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../images/logo.png';
+import paths from '../../utils/paths';
 import './Footer.scss';
 
 export const Footer = () => {
+  const navigate = useNavigate();
   return (
     <div className="footer">
       <div className="footer-logo">
-        <img src={logo} alt="logo Crawler" />
+        <img
+          src={logo}
+          aria-hidden="true"
+          onClick={() => {
+            navigate(paths.home);
+          }}
+          alt="logo Crawler"
+        />
       </div>
       <div className="footer-column">
         <div className="footer-column-header">

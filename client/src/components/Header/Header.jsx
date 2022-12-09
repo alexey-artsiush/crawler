@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import logo from '../../images/logo.png';
 import { Button } from '../Button';
-import paths from '../../utils/paths';
 import { setLogout } from '../../store/user/userSlice';
 import { logout } from '../../store/services/userService';
+import paths from '../../utils/paths';
 import './Header.scss';
 
 export const Header = ({ user }) => {

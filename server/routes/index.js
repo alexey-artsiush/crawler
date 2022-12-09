@@ -12,6 +12,6 @@ router.use('/city', cityRouter);
 router.use('/apartment', apartmentRouter);
 router.use('/news', newsRouter);
 router.use('/files', fileRouter);
-router.use('/article', articleRouter);
+router.use('/chat-article', articleRouter);
 
 module.exports = router;

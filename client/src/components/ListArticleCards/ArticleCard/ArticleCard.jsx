@@ -1,9 +1,17 @@
 import React from 'react';
 import { faMapMarker } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { DateTime } from 'luxon';
 import './ArticleCard.scss';
 
-export const ArticleCard = () => {
+export const ArticleCard = ({ article }) => {
+  const date = DateTime.fromSQL(article.createdAt.slice(0, 10))
+    .setLocale('en')
+    .toFormat('LL/dd/yy');
+  const time = DateTime.fromSQL(article.createdAt.slice(11, 16))
+    .setLocale('en')
+    .toFormat('hh:mm a');
+
   return (
     <div className="article-card">
       <div className="article-card__header">
@@ -15,11 +23,15 @@ export const ArticleCard = () => {
               alt="user"
             />
           </div>
-          Alex
-          {/* {user.firstName} */}
-          &nbsp; Alexey
-          {/* {user.lasName} */}
+          Alex &nbsp;
+          {article.author}
+          <div className="article-card__header-date">
+            {date}
+            <br />
+            {time}
+          </div>
         </div>
+
         <div className="article-card__header-user-counts">
           <span>3 publications</span>
           <span>5 comments</span>
@@ -30,11 +42,11 @@ export const ArticleCard = () => {
         <div className="article-card__body-location">
           <FontAwesomeIcon icon={faMapMarker} />
           &nbsp;
-          <span>Minsk</span>
+          <span>{article.location}</span>
         </div>
-        <div className="article-card__body-title">My the lovest city</div>
+        <div className="article-card__body-title">{article.title}</div>
         <div className="article-card__body-description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, vitae!
+          {article.description}
         </div>
         <div className="article-card__body-comments">
           <button className="article-card__body-button-left" type="button">
