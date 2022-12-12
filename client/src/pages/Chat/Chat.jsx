@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { io } from 'socket.io-client';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { ChatActions } from '../../components/ChatActions/ChatActions';
@@ -10,6 +11,8 @@ import { getArticle } from '../../store/chat/chatArticleSlice';
 import { selectState, selectUser } from '../../store/user/userSlice';
 import './Chat.scss';
 
+const socket = io.connect(process.env.REACT_APP_API_URL);
+
 export const Chat = () => {
   const isAuth = useSelector(selectState);
   const user = useSelector(selectUser);
@@ -18,6 +21,12 @@ export const Chat = () => {
   const articles = useSelector((state) => state.chat.article);
 
   useEffect(() => {
+    socket.on('receive_message', () => dispatch(getArticle(chatId)));
+    dispatch(getArticle(chatId));
+  }, [socket]);
+
+  useEffect(() => {
+    socket.emit('join_room', chatId);
     dispatch(getArticle(chatId));
   }, []);
 
@@ -26,7 +35,7 @@ export const Chat = () => {
       <Header isAuth={isAuth} user={user} />
       <PropertyBlock title={chatId} />
       <div className="chat-content">
-        <ChatActions location={chatId} />
+        <ChatActions socket={socket} location={chatId} />
         <ListArticleCards articles={articles} />
       </div>
       <Footer />

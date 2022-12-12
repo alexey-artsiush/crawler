@@ -8,25 +8,19 @@ const router = require('./routes/index');
 const errorHandler = require('./middleware/errorHandlingMiddleware');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const { Server } = require('socket.io');
+const socketIo = require('socket.io');
+const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-const app = express();
-const server = new http.Server(app);
-
-const io = new Server(server, {
+const server = http.createServer(app);
+const io = socketIo(server, {
   cors: {
-    transports: ['websocket'], // To avoid sticky sessions when using multiple servers
-    path: '/classic-mode',
-    rememberUpgrade: true,
+    origin: process.env.CLIENT_URL,
   },
 });
-
-console.log('Socketio initialised!');
-
 io.on('connection', (socket) => {
-  console.log(`User Connected: ${socket.id}`);
+  console.log('User connected: ', socket.id);
 
   socket.on('join_room', (data) => {
     socket.join(data);
@@ -34,7 +28,8 @@ io.on('connection', (socket) => {
   });
 
   socket.on('send_message', (data) => {
-    socket.to(data.room).emit('receive_message', data);
+    console.log(data.location);
+    socket.to(data.location).emit('receive_message', data);
   });
 
   socket.on('disconnect', () => {
@@ -48,20 +43,13 @@ app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, 'static')));
 app.use(fileUpload({}));
 app.use('/api', router);
-
 app.use(errorHandler);
 
-const start = async () => {
+server.listen(PORT, async (err) => {
   try {
     await sequelize.authenticate();
     await sequelize.sync();
-    app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-    server.listen(process.env.SOCKET_PORT, () => {
-      console.log(`Socker listening on port ${process.env.SOCKET_PORT}!`);
-    });
   } catch (e) {
     console.log(e);
   }
-};
-
-start();
+});

@@ -7,7 +7,7 @@ import { Input } from '../Input';
 import { Modal } from '../Modal';
 import './ChatActions.scss';
 
-export const ChatActions = ({ location }) => {
+export const ChatActions = ({ location, socket }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [askQuestionModal, setAskQuestionModal] = useState(false);
@@ -18,21 +18,19 @@ export const ChatActions = ({ location }) => {
   const [descriptionQuestion, setDescriptionQuestion] = useState('');
 
   const submitQuestion = async () => {
-    try {
-      const formData = new FormData();
-      formData.append('title', titleAdvice);
-      formData.append('description', descriptionAdvice);
-      formData.append('author', user.id);
-      formData.append('location', location);
-      formData.append('type', 'question');
-      await dispatch(createArticle(formData));
-      await dispatch(getArticle());
-      setAskQuestionModal(false);
-      setTitleQuestion('');
-      setDescriptionQuestion('');
-    } catch (e) {
-      console.log(e);
-    }
+    const data = {
+      title: titleAdvice,
+      description: descriptionAdvice,
+      author: user.id,
+      location,
+      type: 'question',
+    };
+    await socket.emit('send_message', data);
+    await dispatch(createArticle(data));
+    await dispatch(getArticle());
+    setAskQuestionModal(false);
+    setTitleQuestion('');
+    setDescriptionQuestion('');
   };
 
   const submitAdvice = async () => {

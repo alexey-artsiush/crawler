@@ -33,7 +33,11 @@ const chatSlice = createSlice({
     isLoading: false,
     message: null,
   },
-  reducers: {},
+  reducers: {
+    setArticle: (state, action) => {
+      state.article = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getArticle.pending, (state) => {
@@ -72,5 +76,5 @@ export const selectPremiumStatusApartment = (state) => {
   return state.apartment.currentApartment.premium;
 };
 
-export const {} = chatSlice.actions;
+export const { setArticle } = chatSlice.actions;
 export default chatSlice.reducer;

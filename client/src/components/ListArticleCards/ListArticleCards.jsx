@@ -3,6 +3,7 @@ import { ArticleCard } from './ArticleCard/ArticleCard';
 import './ListArticleCards.scss';
 
 export const ListArticleCards = ({ articles }) => {
+  console.log(articles);
   return (
     <div className="list-article-cards">
       {articles ? (

@@ -24,15 +24,15 @@ class ArticleController {
 
   async getAll(req, res, next) {
     try {
-      const { location } = req.query;
+      let { location } = req.query;
 
       const articles = await Article.findAndCountAll({
         // where: {
         //   location: {
-        //     [Op.or]: location ? [location] : [],
+        //     [Op.or]: !location ? [] : [location],
         //   },
         // },
-        // order: [['createdAt', 'DESC']],
+        order: [['createdAt', 'DESC']],
       });
       return res.json(articles);
     } catch (e) {

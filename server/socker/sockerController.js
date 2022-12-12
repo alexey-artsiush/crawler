@@ -1,7 +1,7 @@
 const Server = require('socket.io');
 const fixedOrigin = require('./corsFixer.js');
 
-const socker = (app) => {
+const app = (app) => {
   const io = new Server(app, {
     cors: {
       transports: ['websocket'], // To avoid sticky sessions when using multiple servers
@@ -30,3 +30,5 @@ const socker = (app) => {
     });
   });
 };
+
+export default app;
