@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createArticle, getArticle } from '../../store/chat/chatArticleSlice';
+import { Dropdown } from '../Dropdown';
 import { selectUser } from '../../store/user/userSlice';
 import { Button } from '../Button';
 import { Input } from '../Input';
@@ -10,6 +11,7 @@ import './ChatActions.scss';
 export const ChatActions = ({ location, socket }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const [filter, setFilter] = useState('all');
   const [askQuestionModal, setAskQuestionModal] = useState(false);
   const [giveAdviceModal, setGiveAdviceModal] = useState(false);
   const [titleAdvice, setTitleAdvice] = useState('');
@@ -18,30 +20,36 @@ export const ChatActions = ({ location, socket }) => {
   const [descriptionQuestion, setDescriptionQuestion] = useState('');
 
   const submitQuestion = async () => {
-    const data = {
-      title: titleAdvice,
-      description: descriptionAdvice,
-      author: user.id,
-      location,
-      type: 'question',
-    };
-    await socket.emit('send_message', data);
-    await dispatch(createArticle(data));
-    await dispatch(getArticle());
-    setAskQuestionModal(false);
-    setTitleQuestion('');
-    setDescriptionQuestion('');
+    try {
+      const data = {
+        title: titleAdvice,
+        description: descriptionAdvice,
+        author: user.id,
+        location,
+        type: 'question',
+      };
+      await socket.emit('send_message', data);
+      await dispatch(createArticle(data));
+      await dispatch(getArticle());
+      setAskQuestionModal(false);
+      setTitleQuestion('');
+      setDescriptionQuestion('');
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const submitAdvice = async () => {
     try {
-      const formData = new FormData();
-      formData.append('title', titleQuestion);
-      formData.append('description', descriptionQuestion);
-      formData.append('author', user.id);
-      formData.append('location', location);
-      formData.append('type', 'advice');
-      await dispatch(createArticle(formData));
+      const data = {
+        title: titleQuestion,
+        description: descriptionQuestion,
+        author: user.id,
+        location,
+        type: 'advice',
+      };
+      await socket.emit('send_message', data);
+      await dispatch(createArticle(data));
       await dispatch(getArticle());
       setGiveAdviceModal(false);
       setTitleAdvice('');
@@ -68,13 +76,20 @@ export const ChatActions = ({ location, socket }) => {
 
       <div className="chat-actions__buttons">
         <Input type="text" placeholder="" text="Search" />
-        <Input type="text" placeholder="" text="Filter" />
+        <div className="chat-actions__wrapper">
+          <h5>Filter</h5>
+          <Dropdown
+            size="l"
+            selected={filter}
+            setSelected={setFilter}
+            options={['question', 'advice', 'all']}
+          />
+        </div>
       </div>
 
       <Modal active={askQuestionModal} setActive={setAskQuestionModal}>
         <div className="modal-container">
           <h4>New question</h4>
-
           <form>
             <Input
               placeholder="Enter question"

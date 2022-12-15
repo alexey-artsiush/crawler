@@ -11,9 +11,15 @@ const createArticle = async (formData) => {
   return data;
 };
 
+const sendComment = async (commentData) => {
+  const { data } = await host.post('/api/chat-article', commentData);
+  return data;
+};
+
 const chatService = {
   getArticle,
   createArticle,
+  sendComment,
 };
 
 export default chatService;

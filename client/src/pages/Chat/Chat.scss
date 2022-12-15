@@ -3,3 +3,27 @@
   width: 100%;
   margin: 60px 0;
 }
+
+@media (max-width: 875px) {
+  .chat-content {
+    display: flex;
+    flex-direction: column;
+
+    .chat-actions {
+      margin: 0 auto;
+      width: 65%;
+    }
+
+    .chat-actions__buttons {
+      margin: 5px 0;
+    }
+
+    .list-article-cards {
+      width: 100%;
+
+      .article-card {
+        width: 85%;
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
-const { Article } = require('../models/index');
+const { Article, Comment } = require('../models/index');
 const ApiError = require('../error/apiError');
+const { Op } = require('sequelize');
 const uuid = require('uuid');
 const path = require('path');
 
@@ -24,15 +25,19 @@ class ArticleController {
 
   async getAll(req, res, next) {
     try {
-      let { location } = req.query;
+      let { location, type } = req.query;
 
       const articles = await Article.findAndCountAll({
-        // where: {
-        //   location: {
-        //     [Op.or]: !location ? [] : [location],
-        //   },
-        // },
+        where: {
+          type: {
+            [Op.or]: !type ? [] : [type],
+          },
+          location: {
+            [Op.or]: !location ? [] : [location],
+          },
+        },
         order: [['createdAt', 'DESC']],
+        include: { model: Comment },
       });
       return res.json(articles);
     } catch (e) {

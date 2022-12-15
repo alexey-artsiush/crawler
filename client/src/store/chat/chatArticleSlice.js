@@ -25,6 +25,17 @@ export const createArticle = createAsyncThunk(
   }
 );
 
+export const sendComment = createAsyncThunk(
+  'SEND_COMMENT',
+  async (commentData, thunkAPI) => {
+    try {
+      return await chatService.sendComment(commentData);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const chatSlice = createSlice({
   name: 'chat',
   initialState: {

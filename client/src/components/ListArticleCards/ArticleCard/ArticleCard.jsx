@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { DateTime } from 'luxon';
 import './ArticleCard.scss';
 
-export const ArticleCard = ({ article }) => {
+export const ArticleCard = ({ article, onClick, onChange }) => {
   const date = DateTime.fromSQL(article.createdAt.slice(0, 10))
     .setLocale('en')
     .toFormat('LL/dd/yy');
@@ -50,10 +50,19 @@ export const ArticleCard = ({ article }) => {
         </div>
         <div className="article-card__body-comments">
           <button className="article-card__body-button-left" type="button">
-            3 comments
+            {article.comments.length}
+            &nbsp; comments
           </button>
-          <input type="text" placeholder="Type you comment" />
-          <button className="article-card__body-button-right" type="button">
+          <input
+            type="text"
+            onChange={onChange}
+            placeholder="Type you comment"
+          />
+          <button
+            className="article-card__body-button-right"
+            onClick={onClick}
+            type="button"
+          >
             Send
           </button>
         </div>
