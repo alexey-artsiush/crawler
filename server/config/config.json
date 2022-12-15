@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "crawler_user",
+    "username": "root",
     "password": "1234567890test",
-    "database": "crawler",
-    "host": "127.0.0.1",
+    "database": "crawler1",
+    "host": "crawler1.c2ghtxudb4qc.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
