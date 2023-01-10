@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import './Dropdown.scss';
 
@@ -11,8 +11,24 @@ export const Dropdown = ({ selected, setSelected, options, size = 's' }) => {
   });
   const [isActive, setIsActive] = useState(false);
 
+  const menuRef = useRef();
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setIsActive(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handler);
+
+    return () => {
+      document.removeEventListener('mousedown', handler);
+    };
+  });
+
   return (
-    <div className={dropdownClass}>
+    <div className={dropdownClass} ref={menuRef}>
       <div
         aria-hidden="true"
         className="dropdown-btn"

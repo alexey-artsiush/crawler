@@ -15,6 +15,7 @@ import { SearchResult } from '../../../components/SearchResult';
 import {
   getApartmentByUserId,
   selectCountUserResult,
+  selectUserApartmentLoading,
 } from '../../../store/userApartment/userApartmentSlice';
 import paths from '../../../utils/paths';
 import '../Personal.scss';
@@ -26,7 +27,7 @@ export const PersonalObjects = () => {
   const user = useSelector(selectUser);
   const countResult = useSelector(selectCountUserResult);
   const { userApartment } = useSelector((state) => state.userApartment);
-  const { isLoading } = useSelector((state) => state.userApartment);
+  const isLoading = useSelector(selectUserApartmentLoading);
 
   useEffect(() => {
     if (localStorage.getItem('token')) {

@@ -12,7 +12,7 @@ export const ListArticleCards = ({ articles }) => {
   };
   return (
     <div className="list-article-cards">
-      {articles ? (
+      {articles || articles?.length > 0 ? (
         articles.map((article) => (
           <ArticleCard
             key={article.id}

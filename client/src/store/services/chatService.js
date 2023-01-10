@@ -6,13 +6,13 @@ const getArticle = async (location) => {
   return article.data;
 };
 
-const createArticle = async (formData) => {
-  const { data } = await host.post('/api/chat-article', formData);
-  return data;
+const createArticle = async (data) => {
+  const { response } = await host.post('/api/chat-article', data);
+  return response;
 };
 
 const sendComment = async (commentData) => {
-  const { data } = await host.post('/api/chat-article', commentData);
+  const { data } = await host.post('/api/comment', commentData);
   return data;
 };
 

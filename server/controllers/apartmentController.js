@@ -131,6 +131,23 @@ class ApartmentController {
     }
   }
 
+  async getByUserId(req, res, next) {
+    try {
+      let { userId } = req.query;
+
+      const apartments = await Apartment.findAndCountAll({
+        where: { userId },
+        include: { model: Photo },
+        distinct: true,
+        order: [['premium', 'DESC']],
+      });
+
+      return res.json({ apartments });
+    } catch (e) {
+      next(e);
+    }
+  }
+
   async getOne(req, res) {
     const { id } = req.params;
     const apartment = await Apartment.findOne({

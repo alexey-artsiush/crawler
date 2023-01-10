@@ -23,7 +23,7 @@ const getApartment = async (filter) => {
 };
 
 const getApartmentByUserId = async (userId) => {
-  const apartment = await host.get('/api/apartment', {
+  const apartment = await host.get('/api/apartment/users-apartment', {
     params: {
       userId,
     },

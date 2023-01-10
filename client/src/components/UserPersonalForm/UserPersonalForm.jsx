@@ -3,17 +3,16 @@
 import { faDownload, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useInput } from '../../hooks/validation';
 import { updateUser } from '../../store/services/userService';
 import { logoutUser, setLogout, setUser } from '../../store/user/userSlice';
-import paths from '../../utils/paths';
 import { Button } from '../Button';
 import { Cover } from '../Cover';
 import { Dropdown } from '../Dropdown';
 import { Input } from '../Input';
-import { Spinner } from '../Spinner';
+import paths from '../../utils/paths';
 import './UserPersonalForm.scss';
 
 export const UserPersonalForm = ({ user }) => {
@@ -28,8 +27,6 @@ export const UserPersonalForm = ({ user }) => {
   const email = useInput(user.email, { isEmail: true });
 
   const [inputValid, setInputValid] = useState(false);
-
-  const loading = useSelector((state) => state.user.isLoading);
 
   useEffect(() => {
     if (email.emailError || phone.phoneError) {
@@ -60,10 +57,6 @@ export const UserPersonalForm = ({ user }) => {
       setError(`${e.response.data.err.messagee}`);
     }
   };
-
-  if (loading) {
-    return <Spinner />;
-  }
 
   return (
     <div className="personal-account-cont">

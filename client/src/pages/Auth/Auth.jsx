@@ -20,7 +20,6 @@ export const Auth = () => {
   const click = () => {
     try {
       dispatch(loginUser({ email, password }));
-      navigate(paths.personalAccount);
     } catch (e) {
       console.log(e);
       setError('Invalid email or password');
@@ -35,9 +34,9 @@ export const Auth = () => {
 
   useEffect(() => {
     if (user) {
-      navigate(paths.home);
+      navigate(paths.personalAccount);
     }
-  }, []);
+  }, [user]);
 
   return (
     <div className="registr">

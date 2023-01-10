@@ -34,7 +34,7 @@ const Apartment = sequelize.define('apartment', {
   bathroom: { type: DataTypes.INTEGER },
   address: { type: DataTypes.STRING },
   rentalPeriod: { type: DataTypes.STRING, allowNull: false },
-  description: { type: DataTypes.STRING(2500) },
+  description: { type: DataTypes.TEXT },
   floor: { type: DataTypes.STRING },
   location: { type: DataTypes.STRING },
   userId: { type: DataTypes.INTEGER, allowNull: false },
@@ -81,6 +81,9 @@ const Comment = sequelize.define('comment', {
   text: { type: DataTypes.STRING(500), allowNull: false },
   userName: { type: DataTypes.STRING },
   userImage: { type: DataTypes.STRING },
+  location: { type: DataTypes.STRING, allowNull: false },
+  articleId: { type: DataTypes.INTEGER },
+
 });
 
 User.hasMany(Apartment);

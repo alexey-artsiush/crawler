@@ -8,7 +8,7 @@ import { host, authHost } from './index';
 const registration = async (user) => {
   const { data } = await host.post('/api/user/registration', user);
   localStorage.setItem('token', data.accessToken);
-  return data;
+  return jwtDecode(data.accessToken);
 };
 
 const login = async (userData) => {

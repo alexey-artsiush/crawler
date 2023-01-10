@@ -79,6 +79,11 @@
     .article-card__body-button-right {
       border-radius: 0 10px 10px 0;
     }
+    .article-card__body-button-left:hover, .article-card__body-button-right:hover {
+      background-color: $c-blue-dark;
+      color: $c-white;
+      transition: 0.3s;
+    }
   }
 
   .article-card__body-location {

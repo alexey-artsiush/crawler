@@ -5,6 +5,7 @@ import './Cover.scss';
 export const Cover = ({ image = '', name, size = 's' }) => {
   const coverClass = classNames({
     cover: true,
+    'cover--xxsmall': size === 'xxs',
     'cover--xsmall': size === 'xs',
     'cover--small': size === 's',
     'cover--medium': size === 'm',

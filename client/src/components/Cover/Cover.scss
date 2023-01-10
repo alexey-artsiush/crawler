@@ -1,9 +1,15 @@
-@import "../../utils/colors.scss";
+@import '../../utils/colors.scss';
 
 .cover {
   background-position: center;
   background-size: cover;
   margin: 0 0 5px 0;
+}
+
+.cover--xxsmall {
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
 }
 
 .cover--xsmall {

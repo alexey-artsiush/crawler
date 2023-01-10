@@ -12,6 +12,7 @@ router.put(
 );
 router.put('/update-apartment', apartmentController.updateApartment);
 router.get('/', apartmentController.getAll);
+router.get('/users-apartment', apartmentController.getByUserId);
 router.get('/:id', apartmentController.getOne);
 router.delete('/', apartmentController.delete);
 

@@ -7,11 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { useInput } from '../../hooks/validation';
-import {
-  registrationUser,
-  selectState,
-  setError,
-} from '../../store/user/userSlice';
+import { loginUser, registrationUser } from '../../store/user/userSlice';
 import { Dropdown } from '../../components/Dropdown';
 import logo from '../../images/big-logo.png';
 import paths from '../../utils/paths';
@@ -27,7 +23,7 @@ export const Registr = () => {
   const [city, setCity] = useState();
   const error = useSelector((state) => state.user.error);
   const [img, setImg] = useState(null);
-  const isAuth = useSelector(selectState);
+  const user = useSelector((state) => state.user.user);
 
   const [inputValid, setInputValid] = useState(false);
 
@@ -35,10 +31,10 @@ export const Registr = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isAuth) {
+    if (user) {
       navigate(paths.personalAccount);
     }
-  }, [isAuth]);
+  }, [user]);
 
   useEffect(() => {
     if (
@@ -69,7 +65,10 @@ export const Registr = () => {
       formData.append('img', img);
       formData.append('phone', phone.value);
       await dispatch(registrationUser(formData));
-      setError('Success!');
+      await dispatch(
+        loginUser({ email: email.value, password: password.value })
+      );
+      // navigate(paths.personalAccount);
     } catch (e) {
       console.log(e);
     }

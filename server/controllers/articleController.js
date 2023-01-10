@@ -1,4 +1,4 @@
-const { Article, Comment } = require('../models/index');
+const { Article, Comment, User } = require('../models/index');
 const ApiError = require('../error/apiError');
 const { Op } = require('sequelize');
 const uuid = require('uuid');
@@ -37,7 +37,7 @@ class ArticleController {
           },
         },
         order: [['createdAt', 'DESC']],
-        include: { model: Comment },
+        include: { model: Comment, User },
       });
       return res.json(articles);
     } catch (e) {

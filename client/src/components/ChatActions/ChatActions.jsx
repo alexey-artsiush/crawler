@@ -19,31 +19,11 @@ export const ChatActions = ({ location, socket }) => {
   const [titleQuestion, setTitleQuestion] = useState('');
   const [descriptionQuestion, setDescriptionQuestion] = useState('');
 
-  const submitQuestion = async () => {
+  const submitAdvice = async () => {
     try {
       const data = {
         title: titleAdvice,
         description: descriptionAdvice,
-        author: user.id,
-        location,
-        type: 'question',
-      };
-      await socket.emit('send_message', data);
-      await dispatch(createArticle(data));
-      await dispatch(getArticle());
-      setAskQuestionModal(false);
-      setTitleQuestion('');
-      setDescriptionQuestion('');
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const submitAdvice = async () => {
-    try {
-      const data = {
-        title: titleQuestion,
-        description: descriptionQuestion,
         author: user.id,
         location,
         type: 'advice',
@@ -51,9 +31,29 @@ export const ChatActions = ({ location, socket }) => {
       await socket.emit('send_message', data);
       await dispatch(createArticle(data));
       await dispatch(getArticle());
+      setAskQuestionModal(false);
+      // setTitleQuestion('');
+      // setDescriptionQuestion('');
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const submitQuestion = async () => {
+    try {
+      const data = {
+        title: titleQuestion,
+        description: descriptionQuestion,
+        author: user.id,
+        location,
+        type: 'question',
+      };
+      await socket.emit('send_message', data);
+      await dispatch(createArticle(data));
+      await dispatch(getArticle());
       setGiveAdviceModal(false);
-      setTitleAdvice('');
-      setDescriptionAdvice('');
+      // setTitleAdvice('');
+      // setDescriptionAdvice('');
     } catch (e) {
       console.log(e);
     }

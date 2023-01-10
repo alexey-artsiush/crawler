@@ -86,7 +86,7 @@ const userSlice = createSlice({
       state.user = null;
     },
     setError: (state, action) => {
-      state.error = action.payload;
+      state.error = action.payload.message;
     },
   },
   extraReducers: (builder) => {
@@ -98,8 +98,9 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.user = action.payload;
       })
-      .addCase(loginUser.rejected, (state) => {
+      .addCase(loginUser.rejected, (state, action) => {
         state.isError = true;
+        state.error = action.payload.message;
       })
 
       .addCase(logoutUser.fulfilled, (state) => {

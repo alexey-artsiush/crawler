@@ -16,9 +16,9 @@ export const getArticle = createAsyncThunk(
 
 export const createArticle = createAsyncThunk(
   'CREATE_ARTICLE',
-  async (formData, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
-      return await chatService.createArticle(formData);
+      return await chatService.createArticle(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
@@ -40,13 +40,18 @@ const chatSlice = createSlice({
   name: 'chat',
   initialState: {
     article: null,
+    currentChat: null,
     currentArticle: null,
     isLoading: false,
     message: null,
+    isError: null,
   },
   reducers: {
     setArticle: (state, action) => {
       state.article = action.payload;
+    },
+    setCurrentChat: (state, action) => {
+      state.currentChat = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -87,5 +92,5 @@ export const selectPremiumStatusApartment = (state) => {
   return state.apartment.currentApartment.premium;
 };
 
-export const { setArticle } = chatSlice.actions;
+export const { setArticle, setCurrentChat } = chatSlice.actions;
 export default chatSlice.reducer;
