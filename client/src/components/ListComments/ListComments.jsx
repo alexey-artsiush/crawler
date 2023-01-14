@@ -9,8 +9,8 @@ export const ListComments = ({ comments }) => {
     <div className="list-comment-cards">
       {comments || comments?.length > 0
         ? comments.map((comment) => (
-            <CommentCard key={comment.id} comment={comment} />
-          ))
+          <CommentCard key={comment.id} comment={comment} />
+        ))
         : ' '}
     </div>
   );

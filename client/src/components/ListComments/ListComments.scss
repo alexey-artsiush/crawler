@@ -1,0 +1,13 @@
+@keyframes ani {
+    0% {
+        transform: translateY(-5%)
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.list-comment-cards {
+    animation: ani .2s linear;
+}
