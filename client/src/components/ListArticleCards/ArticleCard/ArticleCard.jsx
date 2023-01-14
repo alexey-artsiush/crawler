@@ -17,6 +17,8 @@ export const ArticleCard = ({ article }) => {
     .toFormat('hh:mm a');
 
   const [text, setText] = useState('');
+  const [isDisplayComments, setIsDisplayComments] = useState(false);
+  console.log(isDisplayComments);
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
@@ -35,8 +37,6 @@ export const ArticleCard = ({ article }) => {
       console.log(e);
     }
   };
-
-  const showComments = () => {};
 
   return (
     <div className="article-card">
@@ -73,11 +73,11 @@ export const ArticleCard = ({ article }) => {
         <div className="article-card__body-description">
           {article.description}
         </div>
-        <ListComments comments={article.comments} />
+        {isDisplayComments ? <ListComments comments={article.comments} /> : null}
         <div className="article-card__body-comments">
           <button
             className="article-card__body-button-left"
-            onClick={() => showComments()}
+            onClick={() => setIsDisplayComments(!isDisplayComments)}
             type="button"
           >
             {article.comments.length}
