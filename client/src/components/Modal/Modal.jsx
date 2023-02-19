@@ -16,7 +16,7 @@ export const Modal = ({ active, setActive, children }) => {
         role="presentation"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="modal-container">
+        <div className="modal-header">
           <Button size="s" type="orange" onClick={() => setActive(false)}>
             <FontAwesomeIcon icon={faTimes} />
           </Button>

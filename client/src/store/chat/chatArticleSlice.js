@@ -1,7 +1,7 @@
 /* eslint-disable no-empty-pattern */
 /* eslint-disable object-curly-newline */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import chatService from '../services/chatService';
+import chatService from '../../services/chatService';
 
 export const getArticle = createAsyncThunk(
   'GET_ARTICLE',

@@ -3,7 +3,7 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import apartmentService from '../services/apartmentService';
+import apartmentService from '../../services/apartmentService';
 
 export const getPremiumApartment = createAsyncThunk(
   'GET_PREMIUM_APARTMENT',

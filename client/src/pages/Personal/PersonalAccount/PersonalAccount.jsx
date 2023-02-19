@@ -38,6 +38,8 @@ export const PersonalAccount = () => {
           </>
         ) : (
           <h1 className="activate-message">
+            Thanks for registration!
+            <br />
             Check your mail and activate your account
           </h1>
         )}

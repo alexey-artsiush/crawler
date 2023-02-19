@@ -1,6 +1,6 @@
 /* eslint-disable import/no-named-as-default-member */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import userService from '../services/userService';
+import userService from '../../services/userService';
 
 export const getUserPhoto = createAsyncThunk(
   'GET_USER_PHOTO',
@@ -111,9 +111,8 @@ const userSlice = createSlice({
       .addCase(checkAuth.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(checkAuth.fulfilled, (state, action) => {
+      .addCase(checkAuth.fulfilled, (state) => {
         state.isLoading = false;
-        state.user = action.payload;
       })
       .addCase(checkAuth.rejected, (state) => {
         state.isError = true;
@@ -123,8 +122,10 @@ const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(registrationUser.fulfilled, (state, action) => {
+        state.isError = false;
         state.isLoading = false;
         state.user = action.payload;
+        state.error = 'Success!';
       })
       .addCase(registrationUser.rejected, (state, action) => {
         state.isError = true;

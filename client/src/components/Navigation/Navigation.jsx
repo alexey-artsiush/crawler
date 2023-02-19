@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { NavigationItem } from './NavigationItem';
 import { Button } from '../Button';
-import { logout } from '../../store/services/userService';
+import { logout } from '../../services/userService';
 import { setLogout } from '../../store/user/userSlice';
 import paths from '../../utils/paths';
 import './Navigation.scss';
@@ -28,7 +28,7 @@ export const Navigation = ({ user }) => {
     },
     {
       isActive: pathname === paths.createApartment,
-      title: 'Add an ad',
+      title: 'Add an ad+',
       path: paths.createApartment,
       id: 8,
     },
@@ -49,7 +49,7 @@ export const Navigation = ({ user }) => {
     },
     {
       isActive: pathname === paths.createApartment,
-      title: 'Add an ad',
+      title: 'Add an ad+',
       path: paths.createApartment,
       id: 8,
     },

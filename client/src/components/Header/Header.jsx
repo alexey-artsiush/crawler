@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import logo from '../../images/logo.png';
 import { Button } from '../Button';
 import { setLogout } from '../../store/user/userSlice';
-import { logout } from '../../store/services/userService';
+import { logout } from '../../services/userService';
 import paths from '../../utils/paths';
 import './Header.scss';
 

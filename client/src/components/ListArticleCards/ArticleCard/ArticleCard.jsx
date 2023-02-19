@@ -44,12 +44,13 @@ export const ArticleCard = ({ article }) => {
         <div className="article-card__header-user">
           <div className="article-card__header-photo">
             <img
-              src="https://avatars.mds.yandex.net/get-kinopoisk-image/1777765/8d46d4ea-ce94-469a-81d8-6fd7bf0c1dd1/280x420"
+              src={`${process.env.REACT_APP_API_URL}/${article.user.img}`}
               alt="user"
             />
           </div>
-          Alex &nbsp;
-          {article.author}
+          {article.user.firstName}
+          &nbsp;
+          {article.user.lastName}
           <div className="article-card__header-date">
             {date}
             <br />
@@ -58,8 +59,16 @@ export const ArticleCard = ({ article }) => {
         </div>
 
         <div className="article-card__header-user-counts">
-          <span>3 publications</span>
-          <span>5 comments</span>
+          <span>
+            {article.user.articles.length}
+            &nbsp;
+            posts
+          </span>
+          <span>
+            {article.user.comments.length}
+            &nbsp;
+            comments
+          </span>
         </div>
       </div>
       <div className="article-card__body">

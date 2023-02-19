@@ -2,7 +2,7 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import newsService from '../services/newsService';
+import newsService from '../../services/newsService';
 
 export const getNews = createAsyncThunk('GET_NEWS', async (_, thunkAPI) => {
   try {

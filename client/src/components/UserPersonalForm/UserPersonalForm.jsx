@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useInput } from '../../hooks/validation';
-import { updateUser } from '../../store/services/userService';
+import { updateUser } from '../../services/userService';
 import { logoutUser, setLogout, setUser } from '../../store/user/userSlice';
 import { Button } from '../Button';
 import { Cover } from '../Cover';
@@ -54,7 +54,7 @@ export const UserPersonalForm = ({ user }) => {
       dispatch(setLogout());
       navigate(paths.auth);
     } catch (e) {
-      setError(`${e.response.data.err.messagee}`);
+      setError(`${e.response.data.err.message}`);
     }
   };
 

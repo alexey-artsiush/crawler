@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { useInput } from '../../hooks/validation';
-import { loginUser, registrationUser } from '../../store/user/userSlice';
+import { registrationUser } from '../../store/user/userSlice';
 import { Dropdown } from '../../components/Dropdown';
 import logo from '../../images/big-logo.png';
 import paths from '../../utils/paths';
@@ -65,10 +65,6 @@ export const Registr = () => {
       formData.append('img', img);
       formData.append('phone', phone.value);
       await dispatch(registrationUser(formData));
-      await dispatch(
-        loginUser({ email: email.value, password: password.value })
-      );
-      // navigate(paths.personalAccount);
     } catch (e) {
       console.log(e);
     }

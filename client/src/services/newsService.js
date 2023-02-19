@@ -1,4 +1,4 @@
-import { authHost, host } from '.';
+import { authHost, host } from './index';
 
 const getNews = async () => {
   const news = await host.get(`${process.env.REACT_APP_API_URL}/api/news`);

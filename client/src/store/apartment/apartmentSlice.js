@@ -1,7 +1,7 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import apartmentService from '../services/apartmentService';
+import apartmentService from '../../services/apartmentService';
 
 export const getApartment = createAsyncThunk(
   'GET_APARTMENT',

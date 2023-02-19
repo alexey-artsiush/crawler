@@ -1,7 +1,7 @@
 @import '../../../utils/colors.scss';
 
 .article-card {
-  width: 60%;
+  width: 75%;
   margin: 30px auto;
   border-radius: 5px;
   background-color: $c-blue-light;
@@ -63,10 +63,11 @@
       background-color: $c-white;
       color: $c-blue-dark;
       font-weight: 600;
-      padding: 3px 6px;
+      padding: 8px 22px;
     }
 
     input {
+      width: 50%;
       border: none;
       background-color: $c-white;
       border-radius: 0;
@@ -76,10 +77,13 @@
     .article-card__body-button-left {
       border-radius: 10px 0 0 10px;
     }
+
     .article-card__body-button-right {
       border-radius: 0 10px 10px 0;
     }
-    .article-card__body-button-left:hover, .article-card__body-button-right:hover {
+
+    .article-card__body-button-left:hover,
+    .article-card__body-button-right:hover {
       background-color: $c-blue-dark;
       color: $c-white;
       transition: 0.3s;
@@ -100,6 +104,7 @@
     svg {
       color: $c-white;
     }
+
     span {
       color: $c-white;
       display: flex;

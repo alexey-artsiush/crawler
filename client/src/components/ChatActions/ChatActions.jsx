@@ -24,7 +24,7 @@ export const ChatActions = ({ location, socket }) => {
       const data = {
         title: titleAdvice,
         description: descriptionAdvice,
-        author: user.id,
+        userId: user.id,
         location,
         type: 'advice',
       };
@@ -44,7 +44,7 @@ export const ChatActions = ({ location, socket }) => {
       const data = {
         title: titleQuestion,
         description: descriptionQuestion,
-        author: user.id,
+        userId: user.id,
         location,
         type: 'question',
       };

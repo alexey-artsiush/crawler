@@ -34,6 +34,11 @@
   transform: scale(1);
 }
 
+.modal-header {
+  display: flex;
+  justify-content: end;
+}
+
 .modal-container h4 {
   display: flex;
   justify-content: center;
